@@ -1,5 +1,7 @@
 # Patih — Regulatory Assistant for Indonesia's Ministry of Social Affairs
 
+> 🌐 **Language / Bahasa:** **English** · [Bahasa Indonesia](./README.id.md)
+
 **Patih** answers natural-language questions about the Indonesian Ministry of Social
 Affairs (*Kementerian Sosial*, *Kemensos*) regulatory corpus with **traceable,
 article-level citations** — every factual claim points back to the article it came from
