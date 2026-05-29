@@ -235,5 +235,8 @@ against the original regulation before relying on it for any decision.
 
 ## License
 
-Not yet chosen. The regulation texts used as the corpus are public Indonesian government
-documents. Add a `LICENSE` file before others reuse this project.
+The Patih **code** is released under the [MIT License](LICENSE) — © 2026 Hilmi Nur Ardian.
+
+The regulation texts used as the corpus are **public Indonesian government documents**
+and are not covered by this license; their own legal status applies. Verify each source
+before reuse.
