@@ -55,8 +55,8 @@ is "an expert assistant that helps you understand regulations".
 
 ```bash
 # 1. Clone and enter the repo
-git clone https://github.com/<USERNAME>/<REPO>.git
-cd <REPO>
+git clone https://github.com/masterA88/patih.git
+cd patih
 
 # 2. Install dependencies
 poetry install
