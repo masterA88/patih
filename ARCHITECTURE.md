@@ -1,506 +1,396 @@
-# Arsitektur Chatbot Permensos — Penjelasan Detail
+# Patih — Architecture Overview (v2)
 
-> Dokumen ini menjelaskan arsitektur sistem chatbot regulasi Kemensos secara naratif untuk pembaca yang ingin memahami **bagaimana sistem bekerja end-to-end** tanpa harus membaca 10,000 kata build-spec. Spec teknis lengkap (dependency pin, schema, acceptance criteria) ada di `D:\Research\Project Data\k1\research\chatbot-permensos-tppo\drafts\build-spec-phase1-zero-budget.md`.
+> A narrative explanation of how Patih works end-to-end, for a peer-level reader or a new
+> contributor. It is the short companion to the full reference in
+> [`docs/patih_v3.pdf`](docs/patih_v3.pdf), which carries the theory, the per-module
+> walkthrough, the mathematics, and the annotated bibliography. Read this first (~15 min),
+> then the PDF when you need depth.
 
-**Audience**: Hilmi (peer-level technical), atau siapapun yang akan kontribusi ke proyek.
+**Version 2 (2026-05-29).** v1 described a *single-document* assistant deployed to a public
+cloud VM. The project has since pivoted to **local-first** and a **multi-document** corpus.
+This document reflects the current system; the deployment history is summarised in §8.
 
-**Bahasa**: Indonesia (primary), Inggris untuk istilah teknis yang sudah konvensional.
-
----
-
-## 1. Apa yang Dibangun
-
-Chatbot QA (question-answering) untuk korpus regulasi Kementerian Sosial RI. Pengguna bertanya dalam bahasa natural (Indonesia atau Inggris) tentang isi peraturan; sistem menjawab dengan kutipan Pasal yang valid dan traceable ke dokumen asli.
-
-**Phase 1 scope**: single document — Permensos No 8 Tahun 2023 tentang TPPO & PMI Bermasalah (13 halaman, ~20-30 Pasal).
-
-**Phase 2+ scope**: multi-document corpus — UU 21/2007 TPPO, UU 18/2017 PMI, PP 59/2021, Permensos lain (ratusan PDF eventually).
-
-**Konstrain absolut**:
-- **Zero budget** — free-tier API + FOSS only.
-- **~100 active users/hari** (spread 8 jam kerja, BUKAN 100 simultaneous RPS).
-- **Akurasi tinggi** (>90% target) dengan human-in-the-loop.
-- **Bilingual ID-EN** — kutipan Pasal selalu Bahasa Indonesia asli.
+**Language.** English, with Indonesian legal terms (*Pasal*, *ayat*, *huruf*, *Permensos*,
+…) kept verbatim because article citations must stay in the original Indonesian.
 
 ---
 
-## 2. Arsitektur Tingkat Tinggi (High-Level)
+## 1. What it is
 
-Sistem ini adalah **Retrieval-Augmented Generation (RAG)** dengan beberapa lapisan tambahan untuk legal domain. Konsep dasar:
+Patih is a question-answering assistant over the Indonesian Ministry of Social Affairs
+(*Kemensos*) regulatory corpus. A user asks a natural-language question (Indonesian or
+English); Patih answers with **valid, traceable article citations** back to the source
+regulation — e.g. *"(Pasal 5 ayat (2) huruf a)"*.
 
-1. **Index** seluruh isi PDF jadi chunks kecil dengan metadata struktural (Pasal, ayat, huruf).
-2. Saat user bertanya, **retrieve** chunks yang paling relevan.
-3. **Generate** jawaban dengan LLM yang dibatasi hanya menjawab berdasarkan chunks tersebut.
-4. **Validate** jawaban — pastikan setiap kutipan Pasal benar ada di sumber.
-5. **Display** jawaban + kartu sumber yang bisa di-klik balik ke PDF asli.
+- **Corpus**: 22 documents — 19 article-structured regulations + 3 reference documents
+  (an RPJMN summary, two SOPs). Anchor document: **Permensos 8/2023** (human trafficking &
+  distressed migrant workers). The corpus grows by dropping PDFs into a watched folder.
+- **Runs locally**: data, embeddings, retrieval, and indexes live on the laptop; only the
+  LLM call leaves the machine (§8).
+- **Honest for a legal domain**: every answer carries a citation and a confidence badge;
+  out-of-scope questions are refused rather than answered.
 
-Arsitektur ini **bukan** chatbot generic seperti ChatGPT. Ada empat hal yang membuatnya beda:
-- **Struktur dokumen di-preserve** — sistem tahu bahwa "Pasal 5 ayat (2) huruf b" itu node hierarkis, bukan teks lepas.
-- **Citation enforcement** — LLM dipaksa selalu menyertakan referensi pasal, dan jawaban yang menyebut Pasal yang tidak ada akan di-flag.
-- **Fallback chain provider** — kalau Gemini API rate-limit, otomatis pindah ke Groq → Cerebras → OpenRouter, semua free tier.
-- **Bilingual aware** — query EN di-translate ke ID untuk retrieve, lalu response di-bahas dalam EN dengan kutipan Pasal tetap Bahasa Indonesia.
+**Constraints that shaped it**: zero monetary cost (free-tier LLMs + FOSS), CPU-only,
+Indonesian language, verifiability first.
 
 ---
 
-## 3. Diagram Aliran Data (End-to-End)
+## 2. High-level: which kind of RAG
+
+Patih is a **single-pass, Hybrid (dense + sparse, RRF-fused) Parent-Document RAG**,
+augmented with two domain steps — cross-reference resolution and an always-on definitions
+article — and **gated by a post-hoc citation-and-grounding validation layer**
+("citation-enforced RAG"). It is deliberately advanced on the *retrieval* axes and simple
+on the *control-flow* axis (no agentic/self/corrective loop in Phase 1).
+
+The guiding principle is **retrieval is the ceiling**: an answer can be no better than the
+passages retrieved, so most of the engineering lives in retrieval and parsing, and the LLM
+is treated as a constrained summariser that is validated afterwards.
+
+Four things make it different from a generic chatbot:
+
+- **Document structure is preserved** — the system knows "Pasal 5 ayat (2) huruf b" is a
+  hierarchical node, not loose text.
+- **Citation enforcement** — the LLM must cite an article for every claim, and cited
+  articles that do not exist are flagged.
+- **Provider fallback chain** — if the primary LLM is rate-limited, it falls through to the
+  next free-tier provider automatically.
+- **Bilingual-aware** — an English query is translated to Indonesian for retrieval, while
+  the article citations stay in the original Indonesian.
+
+---
+
+## 3. End-to-end data flow
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│  OFFLINE: INGESTION PIPELINE (run sekali per dokumen baru)                  │
+│  OFFLINE: INGESTION (per new document — via the inbox watcher)               │
 └─────────────────────────────────────────────────────────────────────────────┘
 
-  PDF (Permensos_Nomor_8_Tahun_2023.pdf)
-       │
+  Drop <doc>.pdf  (+ optional <doc>.pdf.meta.json) into data/raw/inbox/
+       │            (if the sidecar is missing, the watcher auto-generates one)
        ▼
   ┌─────────────────┐
-  │  PDF Parser     │  ← PyMuPDF (teks-native), Tesseract OCR (fallback)
-  │  (pdf_loader)   │
+  │  PDF Loader     │  ← PyMuPDF native text; Tesseract OCR (ind) fallback for scans
   └────────┬────────┘
            ▼
-  Plain text + page numbers
+  Route by doc_type:
+     regulation ──► Structure Parser (regex BAB/Bagian/Pasal/ayat/huruf → AST)
+                    + the five parser fixes (§4.1)
+     reference  ──► Generic Ingester (section/page chunks, pasal = null)
            │
            ▼
-  ┌──────────────────────┐
-  │ Structure Parser     │  ← Regex BAB / Bagian / Pasal / Ayat / Huruf
-  │ (structure_parser)   │
-  └──────────┬───────────┘
-             ▼
-  AST (Abstract Syntax Tree):
-    BAB I
-    ├── Pasal 1
-    │     ├── ayat (1)
-    │     │     ├── huruf a
-    │     │     └── huruf b
-    │     └── ayat (2)
-    └── Pasal 2
-    ...
-             │
-             ▼
-  ┌──────────────────────┐
-  │  Parent-Doc Chunker  │  ← Child=ayat/huruf, Parent=Pasal utuh
-  │     (chunker)        │
-  └──────────┬───────────┘
-             ▼
-   List[Chunk] dengan metadata {bab, bagian, pasal, ayat, huruf, parent_id}
-             │
-             ├──────────────────────────┐
-             ▼                          ▼
-  ┌─────────────────────┐    ┌─────────────────────┐
-  │  e5-large ONNX INT8 │    │   BM25 Indexer      │
-  │   (Dense Embedder)  │    │   (rank_bm25)       │
-  └──────────┬──────────┘    └──────────┬──────────┘
-             ▼                          ▼
-       Vector embeddings        Sparse term index
-             │                          │
-             ▼                          ▼
-  ┌─────────────────────┐    ┌─────────────────────┐
-  │  Chroma (SQLite)    │    │  Pickled BM25       │
-  │  data/chroma/       │    │  data/bm25/         │
-  └─────────────────────┘    └─────────────────────┘
+  Parent/child chunks  {doc_id, parent_id, bab, pasal?, ayat, huruf, section_title?,
+                        source_page, text, text_for_embed}
+           │
+           ├───────────────────────────────┐
+           ▼                               ▼
+  ┌─────────────────────┐      ┌─────────────────────┐
+  │  e5-large ONNX FP32 │      │   BM25 (rank_bm25)  │
+  │  (dense embedder)   │      │   no stemming       │
+  └──────────┬──────────┘      └──────────┬──────────┘
+             ▼                            ▼
+  ┌─────────────────────┐      ┌─────────────────────┐
+  │ Chroma (cosine,HNSW)│      │ Pickled BM25 +      │
+  │ data/chroma/        │      │ parent_lookup.json  │
+  └─────────────────────┘      └─────────────────────┘
+        (parsed JSON in data/parsed/ is the source of truth; indexes rebuild from it)
 
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│  ONLINE: QUERY PIPELINE (per user request)                                  │
+│  ONLINE: QUERY (per request)                                                 │
 └─────────────────────────────────────────────────────────────────────────────┘
 
-  User query: "Apa saja bentuk eksploitasi menurut Permensos ini?"
-       │
-       ▼
-  ┌──────────────────┐
-  │  Lang Detect     │  ← lingua-py, threshold 0.7, default ID
-  │  (lang_detect)   │
-  └────────┬─────────┘
-           │ Bahasa terdeteksi: ID
-           ▼
-  [Optional: kalau EN, translate query → ID via Gemini Flash]
-           │
-           ▼
-  ┌──────────────────────┐         ┌──────────────────────┐
-  │  Dense Retriever     │         │  Sparse Retriever    │
-  │  (e5-large encode    │         │  (BM25 in-memory)    │
-  │  query + Chroma sim) │         │                      │
-  └──────────┬───────────┘         └──────────┬───────────┘
-             │                                │
-             ▼                                ▼
-        top-10 chunks                   top-10 chunks
-             │                                │
-             └──────────┬─────────────────────┘
+  User query  ──►  Lang detect (lingua-py, default ID)
+                        │  [if EN: translate query → ID for retrieval]
                         ▼
-            ┌────────────────────────┐
-            │  Reciprocal Rank       │  ← RRF: score = Σ 1/(60+rank)
-            │  Fusion (RRF)          │
-            └───────────┬────────────┘
-                        ▼
-                  top-8 chunks
-                        │
-                        ▼
-            ┌────────────────────────┐
-            │  Parent Expander       │  ← Child → fetch parent Pasal utuh
-            │  (parent_expander)     │
-            └───────────┬────────────┘
-                        ▼
-                  list[Parent Pasal]
-                        │
-                        ▼
-            ┌────────────────────────┐
-            │  Cross-Ref Resolver    │  ← Regex "Pasal X ayat (Y)" → fetch
-            │  (cross_ref_resolver)  │
-            └───────────┬────────────┘
-                        ▼
-                  Expanded context
-                        │
-                        ▼
-            ┌────────────────────────┐
-            │  Always-On Injector    │  ← Selalu prepend Pasal 1 (definisi)
-            │  (always_on)           │
-            └───────────┬────────────┘
-                        ▼
-            Final context (dipakai LLM)
-                        │
-                        ▼
-            ┌─────────────────────────────────────────────────┐
-            │            LiteLLM Gateway                      │
-            │                                                 │
-            │  Primary: Gemini 2.5 Flash (Google AI Studio)   │
-            │     │ [rate limit / error]                      │
-            │     ▼                                           │
-            │  Fallback 1: Groq Llama 3.3 70B                 │
-            │     │ [rate limit / error]                      │
-            │     ▼                                           │
-            │  Fallback 2: Cerebras Qwen 3 32B                │
-            │     │ [rate limit / error]                      │
-            │     ▼                                           │
-            │  Fallback 3: OpenRouter DeepSeek R1 (free)      │
-            └────────────────────┬────────────────────────────┘
+        ┌──────────────────────┐        ┌──────────────────────┐
+        │  Dense (e5 + Chroma) │        │  Sparse (BM25)       │
+        │  top_k_dense = 15    │        │  top_k_sparse = 15   │
+        └──────────┬───────────┘        └──────────┬───────────┘
+                   └─────────────┬─────────────────┘
                                  ▼
-                  Raw LLM response (dengan citation)
-                                 │
+                   Reciprocal Rank Fusion (k = 60) → top_k_fused = 8 (12 in eval)
                                  ▼
-            ┌────────────────────────────────────────┐
-            │      Layer 2: Validators               │
-            │                                        │
-            │  ├ Citation Extractor (regex)          │
-            │  ├ Whitelist Validator (Pasal exist?)  │
-            │  ├ Entity Grounding (HalluGraph EG)    │
-            │  └ Relation Preservation (HalluGraph RP)│
-            └────────────────────┬───────────────────┘
+                   Parent expansion (child → whole Pasal / section), de-dup
                                  ▼
-                  Validated response + confidence score
-                                 │
-                  ┌──────────────┴──────────────┐
-                  │                             │
-                Valid                       Invalid / Low conf
-                  │                             │
-                  ▼                             ▼
-           Display to user            Flag for HITL review +
-           (Chainlit UI)              fallback to "tidak diatur"
+                   Cross-reference resolver (per-document, cap 3)
+                                 ▼
+                   Always-on definitions article (Pasal 1 of the DOMINANT document)
+                                 ▼
+                   Final, per-document-labelled context
+                                 ▼
+        ┌─────────────────────────────────────────────────┐
+        │  LiteLLM gateway (token-bucket + fallback chain) │
+        │   Groq Llama 3.3 70B   (workhorse)               │
+        │     → Gemini 2.5 Flash → Cerebras Qwen 3         │
+        │     → OpenRouter (free slot; currently empty)    │
+        └────────────────────┬────────────────────────────┘
+                             ▼
+                   Raw answer (with citations), T = 0.1
+                             ▼
+        ┌────────────────────────────────────────┐
+        │  Validators (defence in depth)          │
+        │   Citation extractor → whitelist        │
+        │   Entity-Grounding (EG) + Relation (RP) │
+        │   threshold gate → HITL flag + badge    │
+        └────────────────────┬───────────────────┘
+                             ▼
+            🟢/🟡/🔴 badge + answer + click-through citation cards
+                  (low-confidence cases → data/hitl_queue.jsonl)
 ```
+
+Warm latency is dominated by the LLM round-trip; local retrieval is ~150 ms. The first
+query after launch is slow (~7–9 s) because the FP32 embedder loads (§8).
 
 ---
 
-## 4. Lapisan Arsitektur (Layer-by-Layer)
+## 4. The seven layers
 
-Sistem dipecah jadi 7 lapisan, masing-masing dengan tanggung jawab terisolasi. Pemisahan ini bukan estetika — tujuannya supaya:
-- **Phase 2 (multi-doc + KG)** tidak perlu rewrite lapisan ini, cukup extend.
-- **Eval** bisa test per-lapisan (retrieval saja, generation saja) untuk diagnose bottleneck.
-- **Failure mode** terlokalisir (kalau LLM provider down, retrieval tetap jalan).
+The system is seven layers of small single-purpose modules so each can be tested and
+replaced independently, the corpus can grow without touching serving, and failures stay
+localised.
 
-### Lapisan 1: Ingestion (`app/ingest/`)
+### Layer 1 — Ingestion (`app/ingest/`)
 
-**Tugas**: Convert PDF mentah → AST terstruktur → chunks dengan metadata.
+Convert a PDF into structured, chunked, registered data.
 
-**Kenapa rumit**: PDF regulasi Indonesia punya struktur hierarkis ketat (BAB → Bagian → Pasal → ayat → huruf). Generic text-splitter (LangChain `RecursiveCharacterTextSplitter`) akan menghasilkan chunks yang melanggar batas Pasal — fatal untuk citation.
+- `pdf_loader.py` — PyMuPDF native extraction; auto-falls back to Tesseract OCR (`ind`) for
+  scanned PDFs (the helper auto-locates the binary + `models/tessdata/`, so OCR is
+  unattended, including from the watcher).
+- `structure_parser.py` — builds the BAB/Bagian/Pasal/ayat/huruf AST by regex. **§4.1**
+  lists the five real-world fixes. Zero parsed articles signals "not a regulation".
+- `chunker.py` — parents (*Pasal*) and children (*ayat*/*huruf*) with stable ids
+  (`doc_id::pasalN::ayatM::hurufX`), `parent_id`, page numbers, the `"passage: "`-prefixed
+  embed text, and an `always_on` tag on Pasal 1.
+- `generic_ingest.py` — the article-less ingester (SOP/statistics/RPJMN): heading/page
+  *sections* with size-windowed children, same schema with `pasal = null` and a
+  `section_title`.
+- `doc_registry.py` — one record per document, SHA-256 keyed, written atomically.
+- `validators.py` — parse-time quality checks (return flags, never crash).
+- `cli.py` — single-document ingest entry point; reads a `<pdf>.meta.json` sidecar.
 
-**Strategi**:
-1. **Extract text** dengan PyMuPDF (PDF teks-native; Permensos 8/2023 termasuk).
-2. **Fallback OCR** dengan Tesseract `tesseract-ocr-ind` untuk PDF scan (tidak dibutuhkan Phase 1 tapi siap untuk Phase 2 multi-doc).
-3. **Parse struktur** dengan regex eksplisit:
-   ```
-   r"Pasal\s+(\d+)\s*\n(.*?)(?=Pasal\s+\d+|\Z)"
-   r"\((\d+)\)\s+(.*?)(?=\(\d+\)|\Z)"
-   r"([a-z])\.\s+(.*?)(?=[a-z]\.|\Z)"
-   ```
-4. **Validate** hasil parse — manual count Pasal vs daftar isi PDF. Kalau parse miss > 5%, regex perlu diperbaiki.
-5. **Chunking parent-document**:
-   - **Child chunk** (unit retrieval) = 1 ayat, atau 1 huruf kalau ayat panjang (>300 token).
-   - **Parent chunk** (unit context untuk LLM) = 1 Pasal utuh.
+#### 4.1 Five parser fixes (why parsing Indonesian law is hard)
 
-**Output**: `data/parsed/permensos8.json` (AST) + Chroma vector store + BM25 pickle.
+1. **Penjelasan inflation** — the *Penjelasan* (elucidation) repeats every article,
+   doubling the count. Fix: truncate at the heading, but only past 40 % of the document.
+2. **Omnibus laws** — an omnibus (UU 6/2023, *Cipta Kerja*) embeds dozens of other laws
+   (~700 spurious articles). Fix: exclude it from the corpus.
+3. **Pre-BAB articles** — short regulations place articles before the first BAB. Fix: also
+   scan the pre-BAB region.
+4. **Trailing-period headers** — older laws write "Pasal 5."; the pattern tolerates the dot.
+5. **Cross-chapter duplicates** — keep the first, drop the rest.
 
-### Lapisan 2: Retrieval (`app/retrieval/`)
+### Layer 2 — Retrieval (`app/retrieval/`)
 
-**Tugas**: Diberi query, return top-k chunks yang paling relevan + parent Pasal utuh.
+Given a query, return the most relevant articles with their full parent context.
 
-**Kenapa hybrid (BM25 + dense)**: Legal domain butuh keduanya.
-- **BM25** unggul untuk istilah teknis eksak: "TPPO", "Rehabilitasi Sosial", "Pekerja Migran Bermasalah" — embedding kadang melewatkan exact-match istilah jarang.
-- **Dense (e5-large)** unggul untuk semantik: "apa hak korban?" → match "korban berhak memperoleh..."
+- Hybrid because legal questions need **both** meaning (dense, e5-large) **and** exact
+  tokens (sparse BM25 — literal "Pasal 5", rare terms like "TPPO"). No stemming (the
+  Indonesian stemmer over-reduces legal terms).
+- `hybrid.py` fuses the two ranked lists with **RRF (k = 60)** — ranks only, so the two
+  incomparable score scales never need calibration.
+- `parent_expander.py` maps fused children to their parent *Pasal* (or section), de-dups,
+  keeps the best child score.
+- `cross_ref_resolver.py` pulls in up to 3 articles a retrieved article references —
+  **scoped to the same document** (key for multi-doc; §5).
+- `always_on.py` prepends Pasal 1 (definitions) **of the dominant retrieved document**.
+- `pipeline.py` orchestrates; `indexer.py` builds Chroma + BM25 from `data/parsed/*.json`,
+  de-duplicating chunk ids (last-write-wins); `vector_store.py`/`bm25_store.py` wrap the
+  stores; `embedder.py` runs e5-large via ONNX (backend pinned by `EMBEDDER_BACKEND`).
 
-**Strategi**:
-1. **Dense retrieval**: embed query dengan multilingual-e5-large ONNX INT8 (self-host CPU di Oracle VM), cosine similarity di Chroma, top-10.
-2. **Sparse retrieval**: BM25 in-memory di chunks yang sama, top-10.
-3. **Reciprocal Rank Fusion (RRF)**: gabungkan dua ranking. Formula sederhana: `score = Σ 1/(60+rank_i)`. Hasil: top-8.
-4. **Parent expansion**: untuk setiap top-8 child, fetch parent Pasal-nya. Deduplikasi.
-5. **Cross-reference resolver**: regex `r"Pasal\s+(\d+)\s+ayat\s+\((\d+)\)"` di parent text — kalau ada referensi ke Pasal lain, fetch juga.
-6. **Always-on Pasal 1**: Pasal 1 (definisi terminologi) selalu di-prepend. Hampir setiap pertanyaan butuh definisi "Korban TPPO" atau "Rehabilitasi Sosial" yang ada di Pasal 1.
+### Layer 3 — LLM gateway (`app/llm/`)
 
-**Output**: ordered list of Pasal teks utuh, ready untuk dimasukkan ke LLM context.
+Generate the answer from (query + context), surviving free-tier limits.
 
-### Lapisan 3: LLM Gateway (`app/llm/`)
+- `gateway.py` — LiteLLM router, four providers in priority order with a fallback chain;
+  records per-attempt latency and the provider used. **Groq Llama 3.3 70B is the
+  workhorse** (Gemini was demoted to fallback after its real free limit turned out to be
+  ~20 requests/*day*; §9).
+- `rate_limiter.py` — per-provider token buckets (proactive throttle before a hard 429).
+- `prompts.py` — loads the strict system prompt; labels each context chunk per document
+  ("[Pasal N — BAB X — *label*]" or "[*section* — hal. P — *label*]") so the model
+  attributes each fact to the right law; T = 0.1, max_tokens = 1500.
+- `lang_detect.py` / `translator.py` — language detection and EN→ID query translation
+  (SQLite-cached).
+- `generator.py` — the end-to-end orchestrator the UI/sidecar call.
 
-**Tugas**: Generate jawaban dari (query + context), dengan resilience terhadap rate-limit free tier.
+### Layer 4 — Validators (`app/validators/`)
 
-**Kenapa fallback chain**: Setiap free-tier provider punya cap berbeda:
-- **Gemini 2.5 Flash** (Google AI Studio): 15 RPM, 1500 RPD, 1M TPM free.
-- **Groq Llama 3.3 70B**: 30 RPM, 14400 RPD, 6000 TPM free.
-- **Cerebras Qwen 3 32B**: ~30 RPM (newer free tier), 1M tokens/hari.
-- **OpenRouter DeepSeek R1 free**: variable, biasanya 20 RPM tapi can be revoked.
+Defence in depth: never trust the LLM on its face. Independent cheap checks stack, so their
+miss-rates multiply down.
 
-Total aggregated headroom: ~70-90 RPM. Untuk 100 active users/hari dengan ~12-15 RPM peak, single provider sering cukup. Tapi burst-aware fallback wajib supaya UX tidak break saat satu provider down.
+- `citation_extractor.py` — regex pull of every "Pasal N [ayat (M)] [huruf x]".
+- `whitelist_validator.py` — range check + Chroma existence (valid if found in **any**
+  retrieved document; huruf fallback confirms the letter appears in the ayat text).
+- `entity_grounding.py` (EG) — fraction of the answer's legal terms also in context.
+- `relation_preservation.py` (RP) — per-sentence content overlap with context.
+- `pipeline.py` — threshold gate: invalid citation, or EG < 0.95, or RP < 0.85 → raise the
+  HITL flag, colour the badge, append to `data/hitl_queue.jsonl`.
 
-**Strategi**:
-1. **LiteLLM Router** dengan config 4-tier fallback chain.
-2. **Rate limit token bucket** per provider — proactive throttle sebelum hit hard limit.
-3. **Retry with backoff** untuk transient errors (5xx, network).
-4. **Prompt template** struktur eksplisit:
-   ```
-   <system>Anda asisten regulasi Kemensos. Aturan WAJIB:
-     1. Jawab HANYA berdasarkan kutipan Pasal di <context>.
-     2. SELALU sertakan referensi: "(Pasal X ayat (Y) huruf z)".
-     3. Jika informasi tidak ada di <context>, jawab persis:
-        "Informasi tersebut tidak diatur secara spesifik dalam ..."
-     4. JANGAN mengarang nomor pasal.
-   </system>
-   <context>{retrieved_pasals}</context>
-   <question>{user_query}</question>
-   ```
-5. **Bilingual prompt switch**: kalau `query_lang == "en"`, swap ke system prompt EN dengan instruksi "kutipan Pasal pertahankan Bahasa Indonesia asli, terjemahan EN opsional dalam tanda kurung".
+### Layer 5 — UI (`app/ui/`)
 
-### Lapisan 4: Validators (`app/validators/`)
+- `chainlit_app.py` — chat app (welcome + background generator pre-warm; per message a
+  thinking placeholder → generator → badge + answer → citation cards → persist → feedback).
+- `components.py` — confidence badge (🟢/🟡/🔴) and per-document citation cards.
+- `history.py` — SQLite conversation store.
+- `api_sidecar.py` — a FastAPI app mounted inside the Chainlit ASGI server exposing
+  `/health` and `/api/query` (for smoke tests, monitoring, evaluation) — no second server.
 
-**Tugas**: Defense in depth terhadap hallucination — jangan trust LLM begitu saja.
+### Layer 6 — Evaluation (`app/eval/`)
 
-**Kenapa berlapis**: Stanford HAI (Magesh et al. 2024) dokumentasi tools premium komersial (Westlaw $X/bulan) hallucinate 17-34%. Free-tier LLM lebih buruk lagi — expected 25-45% citation imprecision raw.
+Quantify accuracy (§10). A tiered 50-question set drives citation accuracy
+(precision/recall/F1/Jaccard, micro + per-tier), refusal precision, latency percentiles,
+and RAGAS Faithfulness/Answer-Relevancy; `report.py` renders the report.
 
-**Layer**:
-1. **Citation Extractor**: regex extract semua `[Pasal X ayat (Y) huruf z]` dari response.
-2. **Whitelist Validator**: cek setiap citation — apakah Pasal X benar ada di document registry? Kalau Pasal 99 di-mention tapi dokumen cuma punya Pasal 1-30, flag invalid.
-3. **Entity Grounding (HalluGraph EG)**: entity yang muncul di response (nama lembaga, istilah hukum) harus subset dari entity di context. Pakai NER sederhana + legal-term-list Phase 1; upgrade ke proper NER di Phase 2.
-4. **Relation Preservation (HalluGraph RP)**: relasi antar entity di response harus didukung di context. Phase 1 implementation sederhana (regex pattern), Phase 2 pakai dependency parsing.
+### Layer 7 — Tooling & observability (`tools/`, infra)
 
-**Output**: scored response + flag `citations_valid: bool` + `confidence: 0-1`. Kalau gagal threshold, response di-flag untuk HITL review.
-
-### Lapisan 5: UI (`app/ui/`)
-
-**Tugas**: Conversational interface dengan source transparency.
-
-**Pilihan Chainlit** (bukan Streamlit/Gradio):
-- Native streaming response.
-- Built-in source citation cards.
-- Conversation history persistence.
-- Feedback buttons (thumbs up/down) untuk HITL data collection.
-
-**Komponen**:
-- Chat panel utama.
-- Sidebar dengan retrieved chunks (clickable → highlight di PDF preview).
-- "Lihat sumber" button per kutipan Pasal.
-- Confidence badge ("Tinggi" / "Sedang — review disarankan" / "Rendah — perlu verifikasi manual").
-
-### Lapisan 6: Eval (`app/eval/`)
-
-**Tugas**: Quantify accuracy. Tanpa eval, "akurasi tinggi" hanya claim subjective.
-
-**Test set**: 50 Q-A pairs manual, distribusi:
-- 25 Pasal-extraction ("Apa bentuk eksploitasi?")
-- 10 Cross-reference ("Asistensi rehabilitasi diberikan dalam bentuk apa?")
-- 10 Definitional ("Siapa Korban TPPO?")
-- 5 Out-of-scope refusal ("Berapa denda pelaku TPPO?" — Permensos 8/2023 tidak atur sanksi pidana).
-
-**Metrik**:
-- RAGAS Faithfulness ≥ 0.85
-- RAGAS Answer Relevancy ≥ 0.85
-- Custom Citation Accuracy ≥ 90%
-- Refusal Precision ≥ 80%
-- P95 Latency ≤ 30 detik
-- Rate-limit endurance: 100 query dalam 30 menit, < 5% hard failure
-
-**Judge**: RAGAS pakai Gemini Flash sebagai LLM-judge (sama free tier). Trade-off: judge bias terhadap dirinya sendiri kalau generator-nya juga Gemini Flash. Mitigasi: cross-validate sample 10 questions dengan Groq sebagai second judge.
-
-### Lapisan 7: Observability (`app/infra/`)
-
-**Tugas**: Trace setiap query end-to-end untuk debugging dan production monitoring.
-
-**Pilihan Langfuse** (self-host di Oracle VM, FOSS):
-- Trace per request: query → retrieved chunks → LLM call (dengan fallback chain attempts) → response → validation → user feedback.
-- Latency breakdown per stage.
-- Cost tracking (walaupun zero untuk free tier, useful saat migrate ke paid).
-- Eval result history.
+- `inbox_watcher.py` — polling daemon over `data/raw/inbox/`; on a stable PDF it routes by
+  `doc_type`, ingests, indexes incrementally, and moves files to `data/raw/` (failures
+  quarantined to `data/raw/failed/`). If a sidecar is missing it **auto-generates** one
+  from the filename (best-effort, flagged for review); `--no-auto-meta` requires an explicit
+  sidecar.
+- `triage_pdfs.py`, `generate_meta_sidecars.py`, `bulk_ingest.py`, `smoke_multidoc.py` —
+  corpus tooling.
+- Langfuse is wired for per-request tracing (optional, local).
 
 ---
 
-## 5. Bilingual Handling (ID-EN)
+## 5. Multi-document routing (the v2 core)
 
-Kasus khusus yang perlu eksplisit karena Hilmi minta dukung kedua bahasa:
+With many laws in one index, a question competes across all of them; the hybrid ranker
+surfaces the most relevant articles regardless of source, and the **dominant retrieved
+document wins** — implicit routing, no separate classifier. The central multi-document risk
+is **Document-Level Retrieval Mismatch (DRM)**: pulling text from the *wrong* source.
 
-**Pattern**:
-```
-1. User input → lingua-py detect bahasa (ID, EN, atau ambiguous → default ID).
-2. Korpus retrieve: SELALU di Bahasa Indonesia (karena PDF asli ID).
-   ├─ Kalau query ID: langsung embed query + retrieve.
-   └─ Kalau query EN: translate query → ID via Gemini Flash (tetap free tier),
-                      lalu embed translated query, retrieve di korpus ID.
-3. LLM generate response dalam BAHASA QUERY ASLI (bukan bahasa terjemahan).
-4. Kutipan Pasal SELALU Bahasa Indonesia asli, di-preserve verbatim.
-   ├─ Kalau response EN: format "Article 5 paragraph (2) states: '... [teks ID asli]'.
-   │                              In English, this means: '...'"
-   └─ Kalau response ID: format normal "(Pasal 5 ayat (2)) ..."
-5. UI: language toggle button untuk user override.
-```
-
-**Kenapa retrieve di korpus tetap ID**: kalau translate korpus EN dulu, lossy — kehilangan nuansa istilah hukum yang penting ("eksploitasi", "rehabilitasi", "asistensi" punya makna spesifik di konteks regulasi yang sulit di-translate konsisten).
+Patih counters DRM by keeping cross-references and the definitions article
+**document-scoped**: a "Pasal 5" inside a given UU resolves to *that* UU's Pasal 5, and the
+always-on Pasal 1 is the dominant document's, not a hard-coded one. Verified live:
+child-protection → UU 35/2014, human-rights → UU 39/1999, trafficking → Permensos 8/2023,
+development priorities → the RPJMN summary.
 
 ---
 
-## 6. Pertahanan Hallucination (Defense in Depth)
+## 6. Bilingual handling (ID ⇄ EN)
 
-Sistem punya 4 lapis pertahanan terhadap hallucination — masing-masing tidak cukup sendiri, kombinasi yang membuat acceptable.
+```
+1. Detect language (lingua-py; ambiguous → default ID).
+2. Retrieve in Indonesian always (the corpus is ID).
+   ├─ ID query: embed + retrieve directly.
+   └─ EN query: translate query → ID (Gemini Flash, cached), then retrieve.
+3. Answer in the user's language.
+4. Article citations stay verbatim in Indonesian — a translated "Article 5 paragraph (2)"
+   is not a valid legal reference.
+```
 
-| Layer | Mekanisme | Catch apa |
+The corpus is never translated (translating legal terms is lossy); only the *query* is.
+
+---
+
+## 7. Hallucination defence in depth
+
+No single check is trusted; four independent checks stack and their miss-rates multiply.
+
+| Layer | Mechanism | Catches |
 |---|---|---|
-| 1. Prompt Engineering | System prompt strict + few-shot citation example | Mayoritas LLM patuh kalau prompt ketat |
-| 2. Citation Whitelist | Regex extract Pasal, cek registry | "Pasal 99" yang tidak ada di doc → caught |
-| 3. Entity Grounding | NER + check entity subset of context | "Kementerian X" yang tidak di-mention context → caught |
-| 4. Relation Preservation | Dependency-pattern check | "X melakukan Y" yang tidak konsisten dengan context → flag |
+| 1. Prompt | Strict system prompt + few-shot citation format | Most well-behaved generations |
+| 2. Citation whitelist | Regex extract + range/existence check | A fabricated "Pasal 99" not in the document |
+| 3. Entity-Grounding (EG) | Answer legal terms ⊆ context terms | An institution/term absent from context |
+| 4. Relation-Preservation (RP) | Per-sentence content overlap with context | A relation unsupported by context |
 
-**Kombinasi raw rate** (per literature estimate):
-- LLM raw output: 25-45% imprecision di citation
-- + Prompt strict: turun ke 15-25%
-- + Citation whitelist: turun ke 8-15%
-- + EG/RP scorer: turun ke 4-8%
-- + HITL review pada flagged (~15% dari volume): production effective < 5%
-
-Itu pencapaian realistic untuk zero-budget MVP. Bukan "sempurna" — tapi cukup untuk production single-tenant dengan disclaimer eksplisit.
+Risky answers raise a HITL flag and colour the badge. Accuracy is a **calibrated target**
+(≥ 90 % with citations + human review), not a guarantee — the realistic ceiling for a
+zero-budget legal assistant (commercial legal tools still hallucinate 17–34 %).
 
 ---
 
-## 7. Topologi Deployment
+## 8. Local-first run model (replaces v1's cloud deployment)
 
-**Single-node deployment** di Oracle Cloud Always Free VM (ARM Ampere A1, 4 OCPU, 24GB RAM, 200GB block storage).
+Patih now runs on the laptop. There is no server to provision.
 
 ```
-┌──────────────────────────────────────────────────────────────┐
-│  Oracle Cloud Always Free VM (Ubuntu 24.04 ARM)              │
-│                                                              │
-│  ┌─────────────────────────────────────────────────────┐    │
-│  │  Docker Compose stack:                              │    │
-│  │                                                     │    │
-│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────┐  │    │
-│  │  │  Chainlit    │  │   Langfuse   │  │ Postgres │  │    │
-│  │  │  (chat UI)   │  │ (observ)     │  │ (lf-db)  │  │    │
-│  │  │  :8000       │  │ :3000        │  │ :5432    │  │    │
-│  │  └──────┬───────┘  └──────────────┘  └──────────┘  │    │
-│  │         │                                          │    │
-│  │         ▼                                          │    │
-│  │  ┌──────────────────────────────────────────────┐  │    │
-│  │  │  App process:                                │  │    │
-│  │  │   - ingest/retrieval/llm/validators modules  │  │    │
-│  │  │   - e5-large ONNX INT8 (in-process)          │  │    │
-│  │  │   - Chroma (data/chroma/)                    │  │    │
-│  │  │   - BM25 (data/bm25/)                        │  │    │
-│  │  │   - LiteLLM gateway → external APIs          │  │    │
-│  │  └──────────────────────────────────────────────┘  │    │
-│  └─────────────────────────────────────────────────────┘    │
-│                                                              │
-│  Backup: cron tar data/chroma/ → OCI Object Storage Free    │
-└──────────────────────┬───────────────────────────────────────┘
-                       │
-                       ▼ HTTPS via Cloudflare Tunnel
-                  Public URL: chatbot-permensos.your-domain
-                       │
-                       ▼
-                  External APIs (free tier):
-                       ├ Gemini 2.5 Flash
-                       ├ Groq Llama 3.3 70B
-                       ├ Cerebras Qwen 3 32B
-                       └ OpenRouter DeepSeek R1
+Terminal 1:  chainlit run app/ui/chainlit_app.py --port 8000   →  http://localhost:8000
+Terminal 2:  python -m tools.inbox_watcher   (optional — auto-ingest dropped PDFs)
 ```
 
-**Kenapa single-node**: skala 100 active users/hari = ~1500-5000 queries/hari = ~0.02-0.06 query/detik average. Single VM 24GB RAM cukup besar. Multi-node = over-engineering Phase 1.
+**Privacy — "local" is precise, not absolute.** Data, embeddings, retrieval, and indexes
+are local and never leave the machine. **One** step touches the network: the LLM call sends
+the query + the retrieved article text to a cloud provider over HTTPS. The corpus is public
+regulation, so this is low-risk — but a query containing personal/confidential data would
+leave the machine. A fully-local LLM (Ollama) was rejected on quality (small
+Indonesian-capable models are near-random on legal reasoning), so "local" means **data and
+retrieval are local; inference is cloud**.
 
-**Kenapa Cloudflare Tunnel**: gratis, no port-opening di Oracle (security), built-in DDoS protection, custom domain bisa.
-
-**Backup**: data Chroma + BM25 = beberapa MB sampai GB. Daily cron tar → OCI Object Storage 20GB free.
-
----
-
-## 8. Roadmap 3 Fase
-
-### Phase 1 (saat ini): MVP Single-Doc
-- Permensos 8/2023 saja.
-- Single VM Oracle Free.
-- Manual test set 50 questions.
-- Sukses kriteria: faithfulness ≥0.85, citation accuracy ≥90%, P95 latency ≤30s.
-
-### Phase 2: Multi-Doc + KG-Augmented
-- Tambah Permensos lain, UU 21/2007, UU 18/2017, dst (target 20-50 dokumen).
-- **Knowledge Graph** dari struktur Pasal-ayat-rujukan + relasi antar-regulasi ("Pasal X di Permensos Y merujuk UU Z").
-- GraphRAG retrieval pattern (Microsoft GraphRAG / LightRAG inspired).
-- Eval framework di-extend untuk cross-document reasoning.
-- Migration trigger ke paid tier (Gemini Flash paid $5-15/bulan) kalau free tier RPM exhausted.
-
-### Phase 3: Agentic + HITL Production
-- Multi-step reasoning planner (Self-RAG / ReAct inspired) — "AI as judge" dalam batas realistis.
-- Full HITL dashboard untuk reviewer (bukan cuma Hilmi sendiri).
-- A/B testing dengan ahli hukum.
-- Compliance audit trail (PDP, log retention).
-- Migration ke paid stack (Claude Haiku 4.5 / Sonnet 4.6 routing) — $30-100/bulan.
+**Why not the v1 public deployment.** v1 targeted ~100 users/day on an Oracle Always-Free
+VM behind a Cloudflare tunnel. Three deploy attempts failed (Oracle payment verification
+declined; a HuggingFace Space flagged by anti-spam twice for a new account pushing large
+binaries), so the project pivoted to local-first — which also unlocked the move from 1 to
+22 documents. The FastAPI sidecar and a HuggingFace-convention Dockerfile remain in the
+repo, so public hosting (a Cloudflare tunnel from the laptop is the recorded fastest path)
+can be revisited later.
 
 ---
 
-## 9. Trade-off Utama yang Diterima
+## 9. Free-tier economics (brief)
 
-Penting Hilmi (dan reviewer) tahu apa yang **secara sengaja TIDAK** dibangun di Phase 1, dan kenapa.
+The binding free-tier limit is rarely requests-per-minute; it is the **daily** budget.
+Gemini 2.5 Flash's real free limit is ~20 requests/day (not the assumed 1500), which is why
+**Groq became the workhorse**; Groq's binding limit is ~100k tokens/day, which a 50-question
+evaluation burst (~170k tokens) exhausts mid-run. Aggregate serving capacity (~70–90 RPM)
+comfortably absorbs the steady arrival rate (~2 RPM for 100 users/8 h), but evaluation is a
+spiky 100-call burst that daily caps cannot. RAGAS judge metrics never completed on free
+judges and are deferred to a one-off paid run. Full detail: `docs/patih_v3.pdf`
+§Free-Tier Economics.
 
-| Trade-off | Pilihan Phase 1 | Alternatif yang ditolak | Alasan |
+---
+
+## 10. Evaluation state
+
+Acceptance thresholds: citation accuracy ≥ 90 %; Faithfulness & Answer-Relevancy ≥ 0.85;
+RP ≥ 0.80; EG ≥ 0.90; refusal precision ≥ 80 %; P95 ≤ 30 s; hard-failure < 5 %.
+
+Latest single-document run (v6): RP 0.98 ✅, EG 1.00 ✅, refusal 100 % ✅, P95 ~4–7 s ✅,
+hard-failure 0/50 ✅. **Citation accuracy ~79 %** (Tier-1 factual is production-grade; the
+gap is on Tier-2/3 cross-reference questions, a model limit). **RAGAS Faithfulness/Answer-
+Relevancy = nan** (no free judge could complete the run; deferred to a paid judge).
+**The batch evaluation has not yet been re-run on the multi-document corpus** — the main
+open quality item, since some once-out-of-scope questions are now answerable from another
+law.
+
+---
+
+## 11. Roadmap
+
+- **Phase 2 — breadth & structure.** More regulations; Summary-Augmented Chunking against
+  DRM; a Pasal–ayat–reference knowledge graph + a GraphRAG path for thematic "how do UU X,
+  PP Y, Permensos Z interact" questions; a filtered-ANN vector DB (Qdrant/pgvector) when
+  per-regulation filtering is needed; a query-complexity classifier; a 100-question
+  cross-document eval set; move to a paid LLM tier when free RPM is exhausted.
+- **Phase 3 — agentic & production HITL.** Bounded multi-step reasoning (Self-RAG/CRAG,
+  ≤ 3 hops); replace the regex EG/RP with an NLI verifier; a full HITL reviewer dashboard;
+  a PDP (UU 27/2022) audit trail; a possible move to a stronger model tier.
+
+---
+
+## 12. Trade-offs explicitly accepted
+
+| Trade-off | Phase 1 choice | Rejected | Reason |
 |---|---|---|---|
-| **Citation discipline** | Gemini Flash + validators | Claude Sonnet 4.6 | Sonnet 4.6 paid; free tier tidak ada |
-| **Multi-doc reasoning** | Single doc dulu | GraphRAG langsung | Over-engineering untuk Phase 1; Phase 2 plan |
-| **Reranker** | RRF saja | Cohere Rerank API | Cohere paid; RRF + parent expansion sudah cukup baik literature |
-| **Embedding self-host** | e5-large CPU ONNX | Gemini embedding API | API free tier limited; self-host ARM CPU feasible untuk korpus kecil |
-| **HITL** | Flag JSONL queue | Full reviewer dashboard | Personal MVP; Phase 2 expand |
-| **Auth** | Tidak ada (single-tenant) | OAuth + multi-tenant | Personal/eksploratif; Phase 2+ expand |
-| **Latency target** | P95 ≤30 detik | Sub-second | Free tier rate-limit mengharuskan queueing; honest target |
+| Citation discipline | Free model + validators | Claude Sonnet | paid |
+| Multi-doc reasoning | Hybrid + cross-ref | GraphRAG now | premature; cost not justified yet |
+| Reranking | RRF + parent expansion | Cohere Rerank | paid; sufficient without |
+| Embedder | e5-large ONNX (FP32) | paid embedding API | free tier rate-limited; CPU self-host viable |
+| Agentic loop | none in Phase 1 | Self-RAG/CRAG now | compounding-hallucination caution |
+| LLM location | cloud free tier | local LLM (Ollama) | small ID models near-random on legal reasoning |
+| HITL | JSONL flag queue | reviewer dashboard | personal MVP |
+| Deployment | local laptop | public cloud URL | deploy attempts failed; audience is local |
+| INT8 quantisation | FP32 (for now) | INT8 | blocked by a Windows export bug; retry with UTF-8 console |
 
 ---
 
-## 10. Decision Points Masih Terbuka
+## 13. References
 
-Beberapa pertanyaan masih perlu Hilmi putuskan saat hit milestone tertentu (di-track di `decisions.md`):
-
-1. **Oracle region pilih mana?** — capacity Ampere A1 sering out-of-stock di Singapore/Tokyo. Cek Hyderabad/Osaka saat provision.
-2. **PDF source kanonikal**: ada dua copy di project root (`Permensos_Nomor_8_Tahun_2023.pdf` dan `Permensos_Nomor_8_Tahun_2023 (1).pdf`). Verify identical via hash, pilih yang tanpa `(1)`.
-3. **KG technology untuk Phase 2**: Neo4j vs Postgres-as-KG. Neo4j lebih native untuk graph queries, tapi Postgres lebih familiar + free tier Supabase cukup.
-4. **Self-host LLM ada di roadmap?** — kalau Kemensos eventually butuh data residency, Sahabat-AI 70B / Qwen 3 32B self-host perlu GPU budget ($50-200/bulan H100 rental). Defer ke Phase 3.
-
----
-
-## 11. Referensi
-
-- Build-spec teknis lengkap: `D:\Research\Project Data\k1\research\chatbot-permensos-tppo\drafts\build-spec-phase1-zero-budget.md`
-- Brief v1 (single-doc baseline): `D:\Research\Project Data\k1\research\chatbot-permensos-tppo\brief-tech-stack.md`
-- Brief v2 (multi-doc legal reasoning): `D:\Research\Project Data\k1\research\chatbot-permensos-tppo\brief-v2-legal-reasoning.md`
-- Addendum zero-budget: `D:\Research\Project Data\k1\research\chatbot-permensos-tppo\brief-v2-addendum-zero-budget.md`
-- Keputusan committed: `D:\Research\Project Data\k1\research\chatbot-permensos-tppo\decisions.md`
-
----
-
-## 12. Catatan untuk Pembaca Baru
-
-Kalau Anda baru join proyek ini, urutan baca yang saya rekomendasikan:
-
-1. **Dokumen ini (ARCHITECTURE.md)** — orientasi 10 menit.
-2. **HANDOFF_DRA_PROMPT.md** — konteks bagaimana proyek di-orchestrate via Claude agents.
-3. **Brief v2** — kalau ingin paham trade-off teknis (legal reasoning, GraphRAG, dll).
-4. **Build-spec Phase 1** — kalau Anda yang akan implement.
-5. **Brief v1** — referensi single-doc baseline (lebih ringan).
-
-Selamat berkontribusi.
+- **Complete reference**: [`docs/patih_v3.pdf`](docs/patih_v3.pdf) — theory + technical
+  documentation + mathematics + annotated bibliography.
+- **Setup & usage**: [`README.md`](README.md).
+- **Adding documents / metadata**: `data/raw/inbox/README.md`.

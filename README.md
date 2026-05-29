@@ -61,9 +61,8 @@ cd patih
 # 2. Install dependencies
 poetry install
 
-# 3. Build the local embedder (downloads multilingual-e5-large ~2.3 GB from HuggingFace,
-#    then exports it to ONNX under models/. INT8; automatically falls back to FP32.)
-poetry run python deploy/scripts/quantize_e5.py
+# 3. Get the embedder model (ONNX, ~2.2 GB) into models/. Two options — see
+#    "Getting the embedder model" below; the quickest is a direct download, no conversion.
 
 # 4. Configure keys and settings
 cp .env.example .env
@@ -75,6 +74,60 @@ cp .env.example .env
 # 5. Build the indexes (Chroma + BM25) from the 22 already-parsed documents
 poetry run python -m app.retrieval.indexer --rebuild
 ```
+
+## Getting the embedder model (step 3 in detail)
+
+The app loads the `multilingual-e5-large` encoder as ONNX from
+`models/multilingual-e5-large-onnx-int8/` (the folder name is historical — FP32 weights
+work fine). Pick **one** of the two options below. Afterwards the folder must contain
+`model.onnx` + `model.onnx_data` and the tokenizer files (`tokenizer.json`,
+`tokenizer_config.json`, `sentencepiece.bpe.model`, `special_tokens_map.json`,
+`config.json`).
+
+### Option A — direct download (recommended, no conversion)
+
+The HuggingFace repo already ships prebuilt ONNX under `onnx/`, so you just download it and
+move it into place. This is faster than converting and sidesteps the Windows INT8 export
+bug entirely.
+
+**PowerShell (Windows):**
+```powershell
+poetry run huggingface-cli download intfloat/multilingual-e5-large `
+  --include "onnx/model.onnx" "onnx/model.onnx_data" "onnx/config.json" `
+            "onnx/tokenizer.json" "onnx/tokenizer_config.json" `
+            "onnx/special_tokens_map.json" "onnx/sentencepiece.bpe.model" `
+  --local-dir models\_e5_dl
+New-Item -ItemType Directory -Force models\multilingual-e5-large-onnx-int8 | Out-Null
+Move-Item models\_e5_dl\onnx\* models\multilingual-e5-large-onnx-int8\
+Remove-Item -Recurse -Force models\_e5_dl
+```
+
+**bash (macOS / Linux):**
+```bash
+poetry run huggingface-cli download intfloat/multilingual-e5-large \
+  --include "onnx/model.onnx" "onnx/model.onnx_data" "onnx/config.json" \
+            "onnx/tokenizer.json" "onnx/tokenizer_config.json" \
+            "onnx/special_tokens_map.json" "onnx/sentencepiece.bpe.model" \
+  --local-dir models/_e5_dl
+mkdir -p models/multilingual-e5-large-onnx-int8
+mv models/_e5_dl/onnx/* models/multilingual-e5-large-onnx-int8/
+rm -rf models/_e5_dl
+```
+
+The same `onnx/` folder on HuggingFace also offers a smaller INT8 build
+(`model_qint8_avx512_vnni.onnx`, ~560 MB). The app loads `model.onnx` by default, and that
+INT8 build needs an AVX-512-VNNI CPU, so the FP32 download above is the safe default.
+
+### Option B — build it yourself
+
+Converts the PyTorch weights to ONNX locally (attempts INT8, falls back to FP32). Use this
+if you would rather not pull a prebuilt artifact, or want an AVX2 INT8 build:
+```bash
+poetry run python deploy/scripts/quantize_e5.py
+```
+
+Either way, keep `EMBEDDER_BACKEND=onnx` in `.env` (step 4) so indexing and queries share
+the same 1024-dim space.
 
 ## Running
 
