@@ -235,7 +235,7 @@ against the original regulation before relying on it for any decision.
 
 ## License
 
-The Patih **code** is released under the [MIT License](LICENSE) — © 2026 Hilmi Nur Ardian.
+The Patih **code** is released under the [MIT License](LICENSE) — © 2026 Hilmi.
 
 The regulation texts used as the corpus are **public Indonesian government documents**
 and are not covered by this license; their own legal status applies. Verify each source
