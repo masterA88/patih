@@ -1,0 +1,218 @@
+{
+  "ast": {
+    "bab": [
+      {
+        "nomor": "-",
+        "judul": "KETENTUAN",
+        "bagian": [],
+        "pasal": [
+          {
+            "nomor": 1,
+            "text_raw": "Standar Nasional Lembaga Kesejahteraan Sosial merupakan ukuran dan patokan bagi semua pihak terkait dalam pembentukan dan pemberdayaan lembaga kesejahteraan sosial serta menjadi rambu-rambu dalam melaksanakan pembinaan dan evaluasi untuk meningkatkan kualitas lembaga kesejahteraan sosial yang berisikan norma, standar, prosedur, dan kriteria yang digunakan sebagai pedoman bagi lembaga kesejahteraan sosial yang berlaku secara nasional.",
+            "ayat": [],
+            "huruf_top": []
+          },
+          {
+            "nomor": 2,
+            "text_raw": "Standar Nasional Lembaga Kesejahteraan Sosial disusun dengan sistematika sebagai berikut:",
+            "ayat": [],
+            "huruf_top": []
+          }
+        ]
+      },
+      {
+        "nomor": "I",
+        "judul": "PENDAHULUAN",
+        "bagian": [],
+        "pasal": []
+      },
+      {
+        "nomor": "II",
+        "judul": "LEMBAGA KESEJAHTERAAN SOSIAL",
+        "bagian": [],
+        "pasal": [
+          {
+            "nomor": 3,
+            "text_raw": "Standar Nasional Lembaga Kesejahteraan Sosial sebagaimana dimaksud dalam Pasal 2 tercantum dalam Lampiran yang merupakan bagian tidak terpisahkan dari Peraturan Menteri ini.",
+            "ayat": [],
+            "huruf_top": []
+          },
+          {
+            "nomor": 4,
+            "text_raw": "Peraturan Menteri ini mulai berlaku pada tanggal diundangkan. Agar setiap orang mengetahuinya, memerintahkan pengundangan Peraturan Menteri ini dengan penempatannya dalam Berita Negara Republik Indonesia. Ditetapkan di Jakarta pada tanggal  18 November 2016 MENTERI SOSIAL REPUBLIK INDONESIA, ttd. KHOFIFAH INDAR PARAWANSA Diundangkan di Jakarta pada tanggal 23 November 2016 DIREKTUR JENDERAL PERATURAN PERUNDANG-UNDANGAN KEMENTERIAN HUKUM DAN HAK ASASI MANUSIA REPUBLIK INDONESIA, ttd. WIDODO EKATJAHJANA BERITA NEGARA REPUBLIK INDONESIA TAHUN  2016  NOMOR  1778",
+            "ayat": [],
+            "huruf_top": []
+          }
+        ]
+      }
+    ]
+  },
+  "chunks_child": [
+    {
+      "chunk_id": "permensos-22-2016::pasal1::body",
+      "parent_id": "permensos-22-2016::pasal1",
+      "doc_id": "permensos-22-2016",
+      "chunk_type": "child",
+      "bab": "-",
+      "bagian": null,
+      "pasal": 1,
+      "ayat": null,
+      "huruf": null,
+      "text": "Standar Nasional Lembaga Kesejahteraan Sosial merupakan ukuran dan patokan bagi semua pihak terkait dalam pembentukan dan pemberdayaan lembaga kesejahteraan sosial serta menjadi rambu-rambu dalam melaksanakan pembinaan dan evaluasi untuk meningkatkan kualitas lembaga kesejahteraan sosial yang berisikan norma, standar, prosedur, dan kriteria yang digunakan sebagai pedoman bagi lembaga kesejahteraan sosial yang berlaku secara nasional.",
+      "text_for_embed": "passage: [PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016] BAB - — Pasal 1 — Standar Nasional Lembaga Kesejahteraan Sosial merupakan ukuran dan patokan bagi semua pihak terkait dalam pembentukan dan pemberdayaan lembaga kesejahteraan sosial serta menjadi rambu-rambu dalam melaksanakan pembinaan dan evaluasi untuk meningkatkan kualitas lembaga kesejahteraan sosial yang berisikan norma, standar, prosedur, dan kriteria yang digunakan sebagai pedoman bagi lembaga kesejahteraan sosial yang berlaku secara nasional.",
+      "summary_prefix": "PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016",
+      "lang": "id",
+      "source_page": 2,
+      "source_pdf_path": "PERMENSOS NOMOR 22 TAHUN 2016.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": [
+        "always_on"
+      ]
+    },
+    {
+      "chunk_id": "permensos-22-2016::pasal2::body",
+      "parent_id": "permensos-22-2016::pasal2",
+      "doc_id": "permensos-22-2016",
+      "chunk_type": "child",
+      "bab": "-",
+      "bagian": null,
+      "pasal": 2,
+      "ayat": null,
+      "huruf": null,
+      "text": "Standar Nasional Lembaga Kesejahteraan Sosial disusun dengan sistematika sebagai berikut:",
+      "text_for_embed": "passage: [PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016] BAB - — Pasal 2 — Standar Nasional Lembaga Kesejahteraan Sosial disusun dengan sistematika sebagai berikut:",
+      "summary_prefix": "PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016",
+      "lang": "id",
+      "source_page": 2,
+      "source_pdf_path": "PERMENSOS NOMOR 22 TAHUN 2016.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-22-2016::pasal3::body",
+      "parent_id": "permensos-22-2016::pasal3",
+      "doc_id": "permensos-22-2016",
+      "chunk_type": "child",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 3,
+      "ayat": null,
+      "huruf": null,
+      "text": "Standar Nasional Lembaga Kesejahteraan Sosial sebagaimana dimaksud dalam Pasal 2 tercantum dalam Lampiran yang merupakan bagian tidak terpisahkan dari Peraturan Menteri ini.",
+      "text_for_embed": "passage: [PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016] BAB II — Pasal 3 — Standar Nasional Lembaga Kesejahteraan Sosial sebagaimana dimaksud dalam Pasal 2 tercantum dalam Lampiran yang merupakan bagian tidak terpisahkan dari Peraturan Menteri ini.",
+      "summary_prefix": "PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016",
+      "lang": "id",
+      "source_page": 3,
+      "source_pdf_path": "PERMENSOS NOMOR 22 TAHUN 2016.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-22-2016::pasal4::body",
+      "parent_id": "permensos-22-2016::pasal4",
+      "doc_id": "permensos-22-2016",
+      "chunk_type": "child",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 4,
+      "ayat": null,
+      "huruf": null,
+      "text": "Peraturan Menteri ini mulai berlaku pada tanggal diundangkan. Agar setiap orang mengetahuinya, memerintahkan pengundangan Peraturan Menteri ini dengan penempatannya dalam Berita Negara Republik Indonesia. Ditetapkan di Jakarta pada tanggal  18 November 2016 MENTERI SOSIAL REPUBLIK INDONESIA, ttd. KHOFIFAH INDAR PARAWANSA Diundangkan di Jakarta pada tanggal 23 November 2016 DIREKTUR JENDERAL PERATURAN PERUNDANG-UNDANGAN KEMENTERIAN HUKUM DAN HAK ASASI MANUSIA REPUBLIK INDONESIA, ttd. WIDODO EKATJAHJANA BERITA NEGARA REPUBLIK INDONESIA TAHUN  2016  NOMOR  1778",
+      "text_for_embed": "passage: [PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016] BAB II — Pasal 4 — Peraturan Menteri ini mulai berlaku pada tanggal diundangkan. Agar setiap orang mengetahuinya, memerintahkan pengundangan Peraturan Menteri ini dengan penempatannya dalam Berita Negara Republik Indonesia. Ditetapkan di Jakarta pada tanggal  18 November 2016 MENTERI SOSIAL REPUBLIK INDONESIA, ttd. KHOFIFAH INDAR PARAWANSA Diundangkan di Jakarta pada tanggal 23 November 2016 DIREKTUR JENDERAL PERATURAN PERUNDANG-UNDANGAN KEMENTERIAN HUKUM DAN HAK ASASI MANUSIA REPUBLIK INDONESIA, ttd. WIDODO EKATJAHJANA BERITA NEGARA REPUBLIK INDONESIA TAHUN  2016  NOMOR  1778",
+      "summary_prefix": "PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016",
+      "lang": "id",
+      "source_page": 3,
+      "source_pdf_path": "PERMENSOS NOMOR 22 TAHUN 2016.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    }
+  ],
+  "chunks_parent": [
+    {
+      "chunk_id": "permensos-22-2016::pasal1",
+      "parent_id": "permensos-22-2016::pasal1",
+      "doc_id": "permensos-22-2016",
+      "chunk_type": "parent",
+      "bab": "-",
+      "bagian": null,
+      "pasal": 1,
+      "ayat": null,
+      "huruf": null,
+      "text": "Standar Nasional Lembaga Kesejahteraan Sosial merupakan ukuran dan patokan bagi semua pihak terkait dalam pembentukan dan pemberdayaan lembaga kesejahteraan sosial serta menjadi rambu-rambu dalam melaksanakan pembinaan dan evaluasi untuk meningkatkan kualitas lembaga kesejahteraan sosial yang berisikan norma, standar, prosedur, dan kriteria yang digunakan sebagai pedoman bagi lembaga kesejahteraan sosial yang berlaku secara nasional.",
+      "text_for_embed": "passage: [PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016] BAB - — Pasal 1 — Standar Nasional Lembaga Kesejahteraan Sosial merupakan ukuran dan patokan bagi semua pihak terkait dalam pembentukan dan pemberdayaan lembaga kesejahteraan sosial serta menjadi rambu-rambu dalam melaksanakan pembinaan dan evaluasi untuk meningkatkan kualitas lembaga kesejahteraan sosial yang berisikan norma, standar, prosedur, dan kriteria yang digunakan sebagai pedoman bagi lembaga kesejahteraan sosial yang berlaku secara nasional.",
+      "summary_prefix": "PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016",
+      "lang": "id",
+      "source_page": 2,
+      "source_pdf_path": "PERMENSOS NOMOR 22 TAHUN 2016.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": [
+        "always_on"
+      ]
+    },
+    {
+      "chunk_id": "permensos-22-2016::pasal2",
+      "parent_id": "permensos-22-2016::pasal2",
+      "doc_id": "permensos-22-2016",
+      "chunk_type": "parent",
+      "bab": "-",
+      "bagian": null,
+      "pasal": 2,
+      "ayat": null,
+      "huruf": null,
+      "text": "Standar Nasional Lembaga Kesejahteraan Sosial disusun dengan sistematika sebagai berikut:",
+      "text_for_embed": "passage: [PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016] BAB - — Pasal 2 — Standar Nasional Lembaga Kesejahteraan Sosial disusun dengan sistematika sebagai berikut:",
+      "summary_prefix": "PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016",
+      "lang": "id",
+      "source_page": 2,
+      "source_pdf_path": "PERMENSOS NOMOR 22 TAHUN 2016.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-22-2016::pasal3",
+      "parent_id": "permensos-22-2016::pasal3",
+      "doc_id": "permensos-22-2016",
+      "chunk_type": "parent",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 3,
+      "ayat": null,
+      "huruf": null,
+      "text": "Standar Nasional Lembaga Kesejahteraan Sosial sebagaimana dimaksud dalam Pasal 2 tercantum dalam Lampiran yang merupakan bagian tidak terpisahkan dari Peraturan Menteri ini.",
+      "text_for_embed": "passage: [PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016] BAB II — Pasal 3 — Standar Nasional Lembaga Kesejahteraan Sosial sebagaimana dimaksud dalam Pasal 2 tercantum dalam Lampiran yang merupakan bagian tidak terpisahkan dari Peraturan Menteri ini.",
+      "summary_prefix": "PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016",
+      "lang": "id",
+      "source_page": 3,
+      "source_pdf_path": "PERMENSOS NOMOR 22 TAHUN 2016.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-22-2016::pasal4",
+      "parent_id": "permensos-22-2016::pasal4",
+      "doc_id": "permensos-22-2016",
+      "chunk_type": "parent",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 4,
+      "ayat": null,
+      "huruf": null,
+      "text": "Peraturan Menteri ini mulai berlaku pada tanggal diundangkan. Agar setiap orang mengetahuinya, memerintahkan pengundangan Peraturan Menteri ini dengan penempatannya dalam Berita Negara Republik Indonesia. Ditetapkan di Jakarta pada tanggal  18 November 2016 MENTERI SOSIAL REPUBLIK INDONESIA, ttd. KHOFIFAH INDAR PARAWANSA Diundangkan di Jakarta pada tanggal 23 November 2016 DIREKTUR JENDERAL PERATURAN PERUNDANG-UNDANGAN KEMENTERIAN HUKUM DAN HAK ASASI MANUSIA REPUBLIK INDONESIA, ttd. WIDODO EKATJAHJANA BERITA NEGARA REPUBLIK INDONESIA TAHUN  2016  NOMOR  1778",
+      "text_for_embed": "passage: [PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016] BAB II — Pasal 4 — Peraturan Menteri ini mulai berlaku pada tanggal diundangkan. Agar setiap orang mengetahuinya, memerintahkan pengundangan Peraturan Menteri ini dengan penempatannya dalam Berita Negara Republik Indonesia. Ditetapkan di Jakarta pada tanggal  18 November 2016 MENTERI SOSIAL REPUBLIK INDONESIA, ttd. KHOFIFAH INDAR PARAWANSA Diundangkan di Jakarta pada tanggal 23 November 2016 DIREKTUR JENDERAL PERATURAN PERUNDANG-UNDANGAN KEMENTERIAN HUKUM DAN HAK ASASI MANUSIA REPUBLIK INDONESIA, ttd. WIDODO EKATJAHJANA BERITA NEGARA REPUBLIK INDONESIA TAHUN  2016  NOMOR  1778",
+      "summary_prefix": "PERMENSOS 22/2016: PERMENSOS NOMOR 22 TAHUN 2016",
+      "lang": "id",
+      "source_page": 3,
+      "source_pdf_path": "PERMENSOS NOMOR 22 TAHUN 2016.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    }
+  ]
+}

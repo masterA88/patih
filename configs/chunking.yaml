@@ -1,0 +1,35 @@
+# Chunking strategy configuration
+# See build-spec Section 5.1 for full spec
+
+strategy: parent_document
+
+parent:
+  level: pasal          # BAB/Bagian/Pasal — Pasal is canonical parent unit
+  include_header: true  # include "BAB X — Bagian Y — Pasal Z" header text
+
+child:
+  levels:               # child granularities
+    - ayat
+    - huruf
+  max_tokens: 256       # approximate; exact count at Step 2 tuning
+
+embed_prefix:
+  query: "query: "
+  passage: "passage: "
+  # Full passage prefix format (build-spec §12):
+  # "passage: [Permensos 8/2023] {pasal_header} — {text}"
+
+metadata_fields:
+  - doc_id
+  - doc_title
+  - bab_num
+  - bab_title
+  - bagian_num
+  - bagian_title
+  - pasal_num
+  - ayat_num
+  - huruf_label
+  - chunk_type       # "parent" | "child"
+  - parent_id        # for child chunks → parent pasal chunk_id
+  - source_page      # PDF page number
+  - text_for_embed   # prefixed text used at embed time

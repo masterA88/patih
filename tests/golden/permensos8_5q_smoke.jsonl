@@ -1,0 +1,5 @@
+{"qid": "smoke-1", "question": "apa itu korban TPPO?", "expected_pasal": [1]}
+{"qid": "smoke-2", "question": "apa saja bentuk eksploitasi?", "expected_pasal": [5]}
+{"qid": "smoke-3", "question": "siapa yang melakukan asesmen?", "expected_pasal": [4]}
+{"qid": "smoke-4", "question": "bagaimana alur reintegrasi sosial?", "expected_pasal": [19, 20, 21]}
+{"qid": "smoke-5", "question": "siapa yang berwenang menangani?", "expected_pasal": [22, 23, 24]}

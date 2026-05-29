@@ -1,0 +1,17 @@
+# systemd unit for Langfuse (if running standalone, not via docker-compose)
+# Step 8 — configure before Oracle deploy
+
+[Unit]
+Description=Langfuse Observability Server
+After=network.target docker.service
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/chatbot-permensos
+ExecStart=/usr/bin/docker compose -f deploy/docker-compose.yml up langfuse-db langfuse-server
+ExecStop=/usr/bin/docker compose -f deploy/docker-compose.yml stop langfuse-db langfuse-server
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

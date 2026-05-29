@@ -1,0 +1,642 @@
+{
+  "ast": {
+    "bab": [
+      {
+        "nomor": "I",
+        "judul": "KETENTUAN UMUM",
+        "bagian": [],
+        "pasal": [
+          {
+            "nomor": 1,
+            "text_raw": "Dalam Peraturan Menteri ini yang dimaksud dengan: 1. Fakir Miskin adalah orang yang sama sekali tidak mempunyai sumber mata pencaharian dan/atau mempunyai sumber mata pencaharian tetapi tidak mempunyai kemampuan memenuhi kebutuhan dasar yang layak bagi kehidupan dirinya dan/atau keluarganya. 2. Orang Tidak Mampu adalah orang yang mempunyai sumber mata pencaharian, gaji atau upah, yang hanya mampu memenuhi kebutuhan dasar yang layak namun tidak mampu membayar iuran bagi dirinya dan keluarganya. 3. Verifikasi adalah proses kegiatan pemeriksaan dan pengkajian untuk menjamin kebenaran data. 4. Validasi adalah suatu tindakan untuk menetapkan kesahihan data. 5. Data Terpadu adalah sistem data elektronik berisi data nama dan alamat yang memuat informasi sosial, ekonomi, dan demografi dari individu dengan status kesejahteraan terendah di Indonesia. 6. Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu adalah data Fakir Miskin hasil pendataan yang dilakukan oleh lembaga yang menyelenggarakan urusan pemerintahan di bidang kegiatan statistik dan telah diverifikasi dan divalidasi oleh Kementerian Sosial dan telah berkoordinasi dengan pemerintah daerah. 7. Rumah Tangga adalah seseorang atau sekelompok orang yang mendiami sebagian atau seluruh bangunan, biasanya tinggal bersama, dan makan dari satu dapur. 8. Sistem Informasi Kesejahteraan Sosial-Next Generation yang selanjutnya disingkat SIKS-NG adalah suatu sistem informasi yang terdiri dari beberapa komponen berupa pengumpulan dan pengolahan data kesejahteraan sosial dengan memanfaatkan teknologi informasi dan komunikasi yang dilaksanakan secara berjenjang dan berkesinambungan. 9. Musyawarah Desa/Kelurahan/Nama Lain adalah musyawarah antara badan permusyawaratan desa/ kelurahan/nama lain, pemerintah desa/kelurahan/nama lain, dan unsur masyarakat yang diselenggarakan oleh badan permusyawaratan desa/kelurahan/nama lain untuk menyepakati hal yang bersifat strategis. 10. Pemerintah Pusat adalah Presiden Republik Indonesia yang memegang kekuasaan pemerintahan negara Republik Indonesia yang dibantu oleh Wakil Presiden dan menteri sebagaimana dimaksud dalam Undang-Undang Dasar Negara Republik Indonesia Tahun 1945. 11. Menteri adalah menteri yang menyelenggarakan urusan pemerintahan di bidang sosial. 12. Pemerintah Daerah adalah kepala daerah sebagai unsur penyelenggara pemerintahan daerah yang memimpin pelaksanaan urusan pemerintahan yang menjadi kewenangan daerah otonom.",
+            "ayat": [],
+            "huruf_top": []
+          },
+          {
+            "nomor": 2,
+            "text_raw": "Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu merupakan acuan bagi Pemerintah Pusat dan Pemerintah Daerah untuk melaksanakan Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu agar data penerima program valid, tepat sasaran, dan tepat waktu.",
+            "ayat": [],
+            "huruf_top": []
+          }
+        ]
+      },
+      {
+        "nomor": "II",
+        "judul": "VERIFIKASI DAN VALIDASI",
+        "bagian": [],
+        "pasal": [
+          {
+            "nomor": 3,
+            "text_raw": "(1) Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu meliputi: a. struktur organisasi; b. mekanisme pelaksanaan; c. pengolahan dan penyajian data; d. monitoring dan evaluasi; dan e. pendanaan.\n(2) Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu sebagaimana dimaksud pada ayat (1) tercantum dalam Lampiran yang merupakan bagian tidak terpisahkan dari Peraturan Menteri ini.",
+            "ayat": [
+              {
+                "nomor": 1,
+                "text": "Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu meliputi: a. struktur organisasi; b. mekanisme pelaksanaan; c. pengolahan dan penyajian data; d. monitoring dan evaluasi; dan e. pendanaan.",
+                "huruf": []
+              },
+              {
+                "nomor": 2,
+                "text": "Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu sebagaimana dimaksud pada ayat (1) tercantum dalam Lampiran yang merupakan bagian tidak terpisahkan dari Peraturan Menteri ini.",
+                "huruf": []
+              }
+            ],
+            "huruf_top": []
+          },
+          {
+            "nomor": 4,
+            "text_raw": "(1) Struktur organisasi sebagaimana dimaksud dalam Pasal 3 huruf a merupakan pelaksana Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu di daerah kabupaten/kota.\n(2) Struktur organisasi sebagaimana dimaksud pada ayat (1) terdiri atas: a. bupati/wali kota; b. kepala dinas sosial daerah kabupaten/kota; c. kepala dinas kependudukan dan pencatatan sipil daerah kabupaten/kota; d. kepala badan pusat statistik daerah kabupaten/ kota; e. camat; dan f. kepala desa/lurah/nama lain.",
+            "ayat": [
+              {
+                "nomor": 1,
+                "text": "Struktur organisasi sebagaimana dimaksud dalam Pasal 3 huruf a merupakan pelaksana Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu di daerah kabupaten/kota.",
+                "huruf": []
+              },
+              {
+                "nomor": 2,
+                "text": "Struktur organisasi sebagaimana dimaksud pada ayat (1) terdiri atas: a. bupati/wali kota; b. kepala dinas sosial daerah kabupaten/kota; c. kepala dinas kependudukan dan pencatatan sipil daerah kabupaten/kota; d. kepala badan pusat statistik daerah kabupaten/ kota; e. camat; dan f. kepala desa/lurah/nama lain.",
+                "huruf": []
+              }
+            ],
+            "huruf_top": []
+          },
+          {
+            "nomor": 5,
+            "text_raw": "(1) Mekanisme Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu sebagaimana dimaksud dalam",
+            "ayat": [
+              {
+                "nomor": 1,
+                "text": "Mekanisme Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu sebagaimana dimaksud dalam",
+                "huruf": []
+              }
+            ],
+            "huruf_top": []
+          },
+          {
+            "nomor": 6,
+            "text_raw": "(1) Pengolahan dan penyajian data sebagaimana dimaksud dalam Pasal 3 huruf c merupakan kegiatan pemeriksaan data dan dokumen, pembersihan data, pemeringkatan data, pembuatan daftar dan tabulasi data, serta penyajian data.\n(2) Pengolahan dan penyajian data sebagaimana dimaksud pada ayat (1) dilaksanakan oleh Pusat Data dan Informasi Kesejahteraan Sosial.",
+            "ayat": [
+              {
+                "nomor": 1,
+                "text": "Pengolahan dan penyajian data sebagaimana dimaksud dalam Pasal 3 huruf c merupakan kegiatan pemeriksaan data dan dokumen, pembersihan data, pemeringkatan data, pembuatan daftar dan tabulasi data, serta penyajian data.",
+                "huruf": []
+              },
+              {
+                "nomor": 2,
+                "text": "Pengolahan dan penyajian data sebagaimana dimaksud pada ayat (1) dilaksanakan oleh Pusat Data dan Informasi Kesejahteraan Sosial.",
+                "huruf": []
+              }
+            ],
+            "huruf_top": []
+          },
+          {
+            "nomor": 7,
+            "text_raw": "(1) Monitoring dan evaluasi sebagaimana dimaksud dalam",
+            "ayat": [
+              {
+                "nomor": 1,
+                "text": "Monitoring dan evaluasi sebagaimana dimaksud dalam",
+                "huruf": []
+              }
+            ],
+            "huruf_top": []
+          },
+          {
+            "nomor": 8,
+            "text_raw": "Pendanaan sebagaimana dimaksud dalam Pasal 3 huruf e bersumber dari Anggaran Pendapatan dan Belanja Negara, anggaran pendapatan dan belanja daerah, dan sumber pendanaan lain yang tidak mengikat sesuai dengan ketentuan peraturan perundang-undangan.",
+            "ayat": [],
+            "huruf_top": []
+          },
+          {
+            "nomor": 9,
+            "text_raw": "Ketentuan lebih lanjut mengenai mekanisme pelaksanaan, pengolahan dan penyajian data, serta monitoring dan evaluasi sebagaimana dimaksud dalam Pasal 5 sampai dengan Pasal 7 diatur dalam Peraturan yang ditetapkan oleh Pejabat Eselon I yang menangani Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu di lingkungan Kementerian Sosial.",
+            "ayat": [],
+            "huruf_top": []
+          }
+        ]
+      },
+      {
+        "nomor": "III",
+        "judul": "KETENTUAN PENUTUP",
+        "bagian": [],
+        "pasal": [
+          {
+            "nomor": 10,
+            "text_raw": "Peraturan Menteri ini mulai berlaku pada tanggal diundangkan. Agar setiap orang mengetahuinya, memerintahkan pengundangan Peraturan Menteri ini dengan penempatannya dalam Berita Negara Republik Indonesia. Ditetapkan di Jakarta pada tanggal 29 Desember 2017 MENTERI SOSIAL REPUBLIK INDONESIA, ttd. KHOFIFAH INDAR PARAWANSA Diundangkan di Jakarta pada tanggal 29 Januari 2018 DIREKTUR JENDERAL PERATURAN PERUNDANG-UNDANGAN KEMENTERIAN HUKUM DAN HAK ASASI MANUSIA REPUBLIK INDONESIA, ttd. WIDODO EKATJAHJANA BERITA NEGARA REPUBLIK INDONESIA TAHUN 2018 NOMOR 184 LAMPIRAN PERATURAN MENTERI SOSIAL REPUBLIK INDONESIA NOMOR  28 TAHUN 2017 TENTANG PEDOMAN UMUM VERIFIKASI DAN VALIDASI DATA TERPADU PENANGANAN FAKIR MISKIN DAN ORANG TIDAK MAMPU.",
+            "ayat": [],
+            "huruf_top": []
+          }
+        ]
+      },
+      {
+        "nomor": "I",
+        "judul": "PENDAHULUAN",
+        "bagian": [],
+        "pasal": []
+      },
+      {
+        "nomor": "II",
+        "judul": "STRUKTUR ORGANISASI",
+        "bagian": [],
+        "pasal": []
+      },
+      {
+        "nomor": "III",
+        "judul": "MEKANISME PELAKSANAAN",
+        "bagian": [],
+        "pasal": []
+      },
+      {
+        "nomor": "IV",
+        "judul": "PENGOLAHAN DAN PENYAJIAN DATA",
+        "bagian": [],
+        "pasal": []
+      },
+      {
+        "nomor": "V",
+        "judul": "MONITORING DAN EVALUASI",
+        "bagian": [],
+        "pasal": []
+      },
+      {
+        "nomor": "VI",
+        "judul": "PENDANAAN",
+        "bagian": [],
+        "pasal": []
+      },
+      {
+        "nomor": "VII",
+        "judul": "PENUTUP",
+        "bagian": [],
+        "pasal": []
+      }
+    ]
+  },
+  "chunks_child": [
+    {
+      "chunk_id": "permensos-28-2017::pasal1::body",
+      "parent_id": "permensos-28-2017::pasal1",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "child",
+      "bab": "I",
+      "bagian": null,
+      "pasal": 1,
+      "ayat": null,
+      "huruf": null,
+      "text": "Dalam Peraturan Menteri ini yang dimaksud dengan: 1. Fakir Miskin adalah orang yang sama sekali tidak mempunyai sumber mata pencaharian dan/atau mempunyai sumber mata pencaharian tetapi tidak mempunyai kemampuan memenuhi kebutuhan dasar yang layak bagi kehidupan dirinya dan/atau keluarganya. 2. Orang Tidak Mampu adalah orang yang mempunyai sumber mata pencaharian, gaji atau upah, yang hanya mampu memenuhi kebutuhan dasar yang layak namun tidak mampu membayar iuran bagi dirinya dan keluarganya. 3. Verifikasi adalah proses kegiatan pemeriksaan dan pengkajian untuk menjamin kebenaran data. 4. Validasi adalah suatu tindakan untuk menetapkan kesahihan data. 5. Data Terpadu adalah sistem data elektronik berisi data nama dan alamat yang memuat informasi sosial, ekonomi, dan demografi dari individu dengan status kesejahteraan terendah di Indonesia. 6. Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu adalah data Fakir Miskin hasil pendataan yang dilakukan oleh lembaga yang menyelenggarakan urusan pemerintahan di bidang kegiatan statistik dan telah diverifikasi dan divalidasi oleh Kementerian Sosial dan telah berkoordinasi dengan pemerintah daerah. 7. Rumah Tangga adalah seseorang atau sekelompok orang yang mendiami sebagian atau seluruh bangunan, biasanya tinggal bersama, dan makan dari satu dapur. 8. Sistem Informasi Kesejahteraan Sosial-Next Generation yang selanjutnya disingkat SIKS-NG adalah suatu sistem informasi yang terdiri dari beberapa komponen berupa pengumpulan dan pengolahan data kesejahteraan sosial dengan memanfaatkan teknologi informasi dan komunikasi yang dilaksanakan secara berjenjang dan berkesinambungan. 9. Musyawarah Desa/Kelurahan/Nama Lain adalah musyawarah antara badan permusyawaratan desa/ kelurahan/nama lain, pemerintah desa/kelurahan/nama lain, dan unsur masyarakat yang diselenggarakan oleh badan permusyawaratan desa/kelurahan/nama lain untuk menyepakati hal yang bersifat strategis. 10. Pemerintah Pusat adalah Presiden Republik Indonesia yang memegang kekuasaan pemerintahan negara Republik Indonesia yang dibantu oleh Wakil Presiden dan menteri sebagaimana dimaksud dalam Undang-Undang Dasar Negara Republik Indonesia Tahun 1945. 11. Menteri adalah menteri yang menyelenggarakan urusan pemerintahan di bidang sosial. 12. Pemerintah Daerah adalah kepala daerah sebagai unsur penyelenggara pemerintahan daerah yang memimpin pelaksanaan urusan pemerintahan yang menjadi kewenangan daerah otonom.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB I — Pasal 1 — Dalam Peraturan Menteri ini yang dimaksud dengan: 1. Fakir Miskin adalah orang yang sama sekali tidak mempunyai sumber mata pencaharian dan/atau mempunyai sumber mata pencaharian tetapi tidak mempunyai kemampuan memenuhi kebutuhan dasar yang layak bagi kehidupan dirinya dan/atau keluarganya. 2. Orang Tidak Mampu adalah orang yang mempunyai sumber mata pencaharian, gaji atau upah, yang hanya mampu memenuhi kebutuhan dasar yang layak namun tidak mampu membayar iuran bagi dirinya dan keluarganya. 3. Verifikasi adalah proses kegiatan pemeriksaan dan pengkajian untuk menjamin kebenaran data. 4. Validasi adalah suatu tindakan untuk menetapkan kesahihan data. 5. Data Terpadu adalah sistem data elektronik berisi data nama dan alamat yang memuat informasi sosial, ekonomi, dan demografi dari individu dengan status kesejahteraan terendah di Indonesia. 6. Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu adalah data Fakir Miskin hasil pendataan yang dilakukan oleh lembaga yang menyelenggarakan urusan pemerintahan di bidang kegiatan statistik dan telah diverifikasi dan divalidasi oleh Kementerian Sosial dan telah berkoordinasi dengan pemerintah daerah. 7. Rumah Tangga adalah seseorang atau sekelompok orang yang mendiami sebagian atau seluruh bangunan, biasanya tinggal bersama, dan makan dari satu dapur. 8. Sistem Informasi Kesejahteraan Sosial-Next Generation yang selanjutnya disingkat SIKS-NG adalah suatu sistem informasi yang terdiri dari beberapa komponen berupa pengumpulan dan pengolahan data kesejahteraan sosial dengan memanfaatkan teknologi informasi dan komunikasi yang dilaksanakan secara berjenjang dan berkesinambungan. 9. Musyawarah Desa/Kelurahan/Nama Lain adalah musyawarah antara badan permusyawaratan desa/ kelurahan/nama lain, pemerintah desa/kelurahan/nama lain, dan unsur masyarakat yang diselenggarakan oleh badan permusyawaratan desa/kelurahan/nama lain untuk menyepakati hal yang bersifat strategis. 10. Pemerintah Pusat adalah Presiden Republik Indonesia yang memegang kekuasaan pemerintahan negara Republik Indonesia yang dibantu oleh Wakil Presiden dan menteri sebagaimana dimaksud dalam Undang-Undang Dasar Negara Republik Indonesia Tahun 1945. 11. Menteri adalah menteri yang menyelenggarakan urusan pemerintahan di bidang sosial. 12. Pemerintah Daerah adalah kepala daerah sebagai unsur penyelenggara pemerintahan daerah yang memimpin pelaksanaan urusan pemerintahan yang menjadi kewenangan daerah otonom.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 2,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": [
+        "always_on"
+      ]
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal2::body",
+      "parent_id": "permensos-28-2017::pasal2",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "child",
+      "bab": "I",
+      "bagian": null,
+      "pasal": 2,
+      "ayat": null,
+      "huruf": null,
+      "text": "Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu merupakan acuan bagi Pemerintah Pusat dan Pemerintah Daerah untuk melaksanakan Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu agar data penerima program valid, tepat sasaran, dan tepat waktu.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB I — Pasal 2 — Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu merupakan acuan bagi Pemerintah Pusat dan Pemerintah Daerah untuk melaksanakan Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu agar data penerima program valid, tepat sasaran, dan tepat waktu.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 2,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal3::ayat1",
+      "parent_id": "permensos-28-2017::pasal3",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "child",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 3,
+      "ayat": 1,
+      "huruf": null,
+      "text": "Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu meliputi: a. struktur organisasi; b. mekanisme pelaksanaan; c. pengolahan dan penyajian data; d. monitoring dan evaluasi; dan e. pendanaan.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 3 ayat (1) — Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu meliputi: a. struktur organisasi; b. mekanisme pelaksanaan; c. pengolahan dan penyajian data; d. monitoring dan evaluasi; dan e. pendanaan.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 3,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal3::ayat2",
+      "parent_id": "permensos-28-2017::pasal3",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "child",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 3,
+      "ayat": 2,
+      "huruf": null,
+      "text": "Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu sebagaimana dimaksud pada ayat (1) tercantum dalam Lampiran yang merupakan bagian tidak terpisahkan dari Peraturan Menteri ini.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 3 ayat (2) — Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu sebagaimana dimaksud pada ayat (1) tercantum dalam Lampiran yang merupakan bagian tidak terpisahkan dari Peraturan Menteri ini.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 3,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal4::ayat1",
+      "parent_id": "permensos-28-2017::pasal4",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "child",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 4,
+      "ayat": 1,
+      "huruf": null,
+      "text": "Struktur organisasi sebagaimana dimaksud dalam Pasal 3 huruf a merupakan pelaksana Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu di daerah kabupaten/kota.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 4 ayat (1) — Struktur organisasi sebagaimana dimaksud dalam Pasal 3 huruf a merupakan pelaksana Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu di daerah kabupaten/kota.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 3,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal4::ayat2",
+      "parent_id": "permensos-28-2017::pasal4",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "child",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 4,
+      "ayat": 2,
+      "huruf": null,
+      "text": "Struktur organisasi sebagaimana dimaksud pada ayat (1) terdiri atas: a. bupati/wali kota; b. kepala dinas sosial daerah kabupaten/kota; c. kepala dinas kependudukan dan pencatatan sipil daerah kabupaten/kota; d. kepala badan pusat statistik daerah kabupaten/ kota; e. camat; dan f. kepala desa/lurah/nama lain.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 4 ayat (2) — Struktur organisasi sebagaimana dimaksud pada ayat (1) terdiri atas: a. bupati/wali kota; b. kepala dinas sosial daerah kabupaten/kota; c. kepala dinas kependudukan dan pencatatan sipil daerah kabupaten/kota; d. kepala badan pusat statistik daerah kabupaten/ kota; e. camat; dan f. kepala desa/lurah/nama lain.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 3,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal5::ayat1",
+      "parent_id": "permensos-28-2017::pasal5",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "child",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 5,
+      "ayat": 1,
+      "huruf": null,
+      "text": "Mekanisme Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu sebagaimana dimaksud dalam",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 5 ayat (1) — Mekanisme Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu sebagaimana dimaksud dalam",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 3,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal6::ayat1",
+      "parent_id": "permensos-28-2017::pasal6",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "child",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 6,
+      "ayat": 1,
+      "huruf": null,
+      "text": "Pengolahan dan penyajian data sebagaimana dimaksud dalam Pasal 3 huruf c merupakan kegiatan pemeriksaan data dan dokumen, pembersihan data, pemeringkatan data, pembuatan daftar dan tabulasi data, serta penyajian data.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 6 ayat (1) — Pengolahan dan penyajian data sebagaimana dimaksud dalam Pasal 3 huruf c merupakan kegiatan pemeriksaan data dan dokumen, pembersihan data, pemeringkatan data, pembuatan daftar dan tabulasi data, serta penyajian data.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 4,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal6::ayat2",
+      "parent_id": "permensos-28-2017::pasal6",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "child",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 6,
+      "ayat": 2,
+      "huruf": null,
+      "text": "Pengolahan dan penyajian data sebagaimana dimaksud pada ayat (1) dilaksanakan oleh Pusat Data dan Informasi Kesejahteraan Sosial.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 6 ayat (2) — Pengolahan dan penyajian data sebagaimana dimaksud pada ayat (1) dilaksanakan oleh Pusat Data dan Informasi Kesejahteraan Sosial.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 4,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal7::ayat1",
+      "parent_id": "permensos-28-2017::pasal7",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "child",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 7,
+      "ayat": 1,
+      "huruf": null,
+      "text": "Monitoring dan evaluasi sebagaimana dimaksud dalam",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 7 ayat (1) — Monitoring dan evaluasi sebagaimana dimaksud dalam",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 4,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal8::body",
+      "parent_id": "permensos-28-2017::pasal8",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "child",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 8,
+      "ayat": null,
+      "huruf": null,
+      "text": "Pendanaan sebagaimana dimaksud dalam Pasal 3 huruf e bersumber dari Anggaran Pendapatan dan Belanja Negara, anggaran pendapatan dan belanja daerah, dan sumber pendanaan lain yang tidak mengikat sesuai dengan ketentuan peraturan perundang-undangan.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 8 — Pendanaan sebagaimana dimaksud dalam Pasal 3 huruf e bersumber dari Anggaran Pendapatan dan Belanja Negara, anggaran pendapatan dan belanja daerah, dan sumber pendanaan lain yang tidak mengikat sesuai dengan ketentuan peraturan perundang-undangan.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 4,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal9::body",
+      "parent_id": "permensos-28-2017::pasal9",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "child",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 9,
+      "ayat": null,
+      "huruf": null,
+      "text": "Ketentuan lebih lanjut mengenai mekanisme pelaksanaan, pengolahan dan penyajian data, serta monitoring dan evaluasi sebagaimana dimaksud dalam Pasal 5 sampai dengan Pasal 7 diatur dalam Peraturan yang ditetapkan oleh Pejabat Eselon I yang menangani Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu di lingkungan Kementerian Sosial.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 9 — Ketentuan lebih lanjut mengenai mekanisme pelaksanaan, pengolahan dan penyajian data, serta monitoring dan evaluasi sebagaimana dimaksud dalam Pasal 5 sampai dengan Pasal 7 diatur dalam Peraturan yang ditetapkan oleh Pejabat Eselon I yang menangani Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu di lingkungan Kementerian Sosial.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 4,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal10::body",
+      "parent_id": "permensos-28-2017::pasal10",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "child",
+      "bab": "III",
+      "bagian": null,
+      "pasal": 10,
+      "ayat": null,
+      "huruf": null,
+      "text": "Peraturan Menteri ini mulai berlaku pada tanggal diundangkan. Agar setiap orang mengetahuinya, memerintahkan pengundangan Peraturan Menteri ini dengan penempatannya dalam Berita Negara Republik Indonesia. Ditetapkan di Jakarta pada tanggal 29 Desember 2017 MENTERI SOSIAL REPUBLIK INDONESIA, ttd. KHOFIFAH INDAR PARAWANSA Diundangkan di Jakarta pada tanggal 29 Januari 2018 DIREKTUR JENDERAL PERATURAN PERUNDANG-UNDANGAN KEMENTERIAN HUKUM DAN HAK ASASI MANUSIA REPUBLIK INDONESIA, ttd. WIDODO EKATJAHJANA BERITA NEGARA REPUBLIK INDONESIA TAHUN 2018 NOMOR 184 LAMPIRAN PERATURAN MENTERI SOSIAL REPUBLIK INDONESIA NOMOR  28 TAHUN 2017 TENTANG PEDOMAN UMUM VERIFIKASI DAN VALIDASI DATA TERPADU PENANGANAN FAKIR MISKIN DAN ORANG TIDAK MAMPU.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB III — Pasal 10 — Peraturan Menteri ini mulai berlaku pada tanggal diundangkan. Agar setiap orang mengetahuinya, memerintahkan pengundangan Peraturan Menteri ini dengan penempatannya dalam Berita Negara Republik Indonesia. Ditetapkan di Jakarta pada tanggal 29 Desember 2017 MENTERI SOSIAL REPUBLIK INDONESIA, ttd. KHOFIFAH INDAR PARAWANSA Diundangkan di Jakarta pada tanggal 29 Januari 2018 DIREKTUR JENDERAL PERATURAN PERUNDANG-UNDANGAN KEMENTERIAN HUKUM DAN HAK ASASI MANUSIA REPUBLIK INDONESIA, ttd. WIDODO EKATJAHJANA BERITA NEGARA REPUBLIK INDONESIA TAHUN 2018 NOMOR 184 LAMPIRAN PERATURAN MENTERI SOSIAL REPUBLIK INDONESIA NOMOR  28 TAHUN 2017 TENTANG PEDOMAN UMUM VERIFIKASI DAN VALIDASI DATA TERPADU PENANGANAN FAKIR MISKIN DAN ORANG TIDAK MAMPU.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 5,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    }
+  ],
+  "chunks_parent": [
+    {
+      "chunk_id": "permensos-28-2017::pasal1",
+      "parent_id": "permensos-28-2017::pasal1",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "parent",
+      "bab": "I",
+      "bagian": null,
+      "pasal": 1,
+      "ayat": null,
+      "huruf": null,
+      "text": "Dalam Peraturan Menteri ini yang dimaksud dengan: 1. Fakir Miskin adalah orang yang sama sekali tidak mempunyai sumber mata pencaharian dan/atau mempunyai sumber mata pencaharian tetapi tidak mempunyai kemampuan memenuhi kebutuhan dasar yang layak bagi kehidupan dirinya dan/atau keluarganya. 2. Orang Tidak Mampu adalah orang yang mempunyai sumber mata pencaharian, gaji atau upah, yang hanya mampu memenuhi kebutuhan dasar yang layak namun tidak mampu membayar iuran bagi dirinya dan keluarganya. 3. Verifikasi adalah proses kegiatan pemeriksaan dan pengkajian untuk menjamin kebenaran data. 4. Validasi adalah suatu tindakan untuk menetapkan kesahihan data. 5. Data Terpadu adalah sistem data elektronik berisi data nama dan alamat yang memuat informasi sosial, ekonomi, dan demografi dari individu dengan status kesejahteraan terendah di Indonesia. 6. Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu adalah data Fakir Miskin hasil pendataan yang dilakukan oleh lembaga yang menyelenggarakan urusan pemerintahan di bidang kegiatan statistik dan telah diverifikasi dan divalidasi oleh Kementerian Sosial dan telah berkoordinasi dengan pemerintah daerah. 7. Rumah Tangga adalah seseorang atau sekelompok orang yang mendiami sebagian atau seluruh bangunan, biasanya tinggal bersama, dan makan dari satu dapur. 8. Sistem Informasi Kesejahteraan Sosial-Next Generation yang selanjutnya disingkat SIKS-NG adalah suatu sistem informasi yang terdiri dari beberapa komponen berupa pengumpulan dan pengolahan data kesejahteraan sosial dengan memanfaatkan teknologi informasi dan komunikasi yang dilaksanakan secara berjenjang dan berkesinambungan. 9. Musyawarah Desa/Kelurahan/Nama Lain adalah musyawarah antara badan permusyawaratan desa/ kelurahan/nama lain, pemerintah desa/kelurahan/nama lain, dan unsur masyarakat yang diselenggarakan oleh badan permusyawaratan desa/kelurahan/nama lain untuk menyepakati hal yang bersifat strategis. 10. Pemerintah Pusat adalah Presiden Republik Indonesia yang memegang kekuasaan pemerintahan negara Republik Indonesia yang dibantu oleh Wakil Presiden dan menteri sebagaimana dimaksud dalam Undang-Undang Dasar Negara Republik Indonesia Tahun 1945. 11. Menteri adalah menteri yang menyelenggarakan urusan pemerintahan di bidang sosial. 12. Pemerintah Daerah adalah kepala daerah sebagai unsur penyelenggara pemerintahan daerah yang memimpin pelaksanaan urusan pemerintahan yang menjadi kewenangan daerah otonom.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB I — Pasal 1 — Dalam Peraturan Menteri ini yang dimaksud dengan: 1. Fakir Miskin adalah orang yang sama sekali tidak mempunyai sumber mata pencaharian dan/atau mempunyai sumber mata pencaharian tetapi tidak mempunyai kemampuan memenuhi kebutuhan dasar yang layak bagi kehidupan dirinya dan/atau keluarganya. 2. Orang Tidak Mampu adalah orang yang mempunyai sumber mata pencaharian, gaji atau upah, yang hanya mampu memenuhi kebutuhan dasar yang layak namun tidak mampu membayar iuran bagi dirinya dan keluarganya. 3. Verifikasi adalah proses kegiatan pemeriksaan dan pengkajian untuk menjamin kebenaran data. 4. Validasi adalah suatu tindakan untuk menetapkan kesahihan data. 5. Data Terpadu adalah sistem data elektronik berisi data nama dan alamat yang memuat informasi sosial, ekonomi, dan demografi dari individu dengan status kesejahteraan terendah di Indonesia. 6. Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu adalah data Fakir Miskin hasil pendataan yang dilakukan oleh lembaga yang menyelenggarakan urusan pemerintahan di bidang kegiatan statistik dan telah diverifikasi dan divalidasi oleh Kementerian Sosial dan telah berkoordinasi dengan pemerintah daerah. 7. Rumah Tangga adalah seseorang atau sekelompok orang yang mendiami sebagian atau seluruh bangunan, biasanya tinggal bersama, dan makan dari satu dapur. 8. Sistem Informasi Kesejahteraan Sosial-Next Generation yang selanjutnya disingkat SIKS-NG adalah suatu sistem informasi yang terdiri dari beberapa komponen berupa pengumpulan dan pengolahan data kesejahteraan sosial dengan memanfaatkan teknologi informasi dan komunikasi yang dilaksanakan secara berjenjang dan berkesinambungan. 9. Musyawarah Desa/Kelurahan/Nama Lain adalah musyawarah antara badan permusyawaratan desa/ kelurahan/nama lain, pemerintah desa/kelurahan/nama lain, dan unsur masyarakat yang diselenggarakan oleh badan permusyawaratan desa/kelurahan/nama lain untuk menyepakati hal yang bersifat strategis. 10. Pemerintah Pusat adalah Presiden Republik Indonesia yang memegang kekuasaan pemerintahan negara Republik Indonesia yang dibantu oleh Wakil Presiden dan menteri sebagaimana dimaksud dalam Undang-Undang Dasar Negara Republik Indonesia Tahun 1945. 11. Menteri adalah menteri yang menyelenggarakan urusan pemerintahan di bidang sosial. 12. Pemerintah Daerah adalah kepala daerah sebagai unsur penyelenggara pemerintahan daerah yang memimpin pelaksanaan urusan pemerintahan yang menjadi kewenangan daerah otonom.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 2,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": [
+        "always_on"
+      ]
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal2",
+      "parent_id": "permensos-28-2017::pasal2",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "parent",
+      "bab": "I",
+      "bagian": null,
+      "pasal": 2,
+      "ayat": null,
+      "huruf": null,
+      "text": "Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu merupakan acuan bagi Pemerintah Pusat dan Pemerintah Daerah untuk melaksanakan Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu agar data penerima program valid, tepat sasaran, dan tepat waktu.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB I — Pasal 2 — Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu merupakan acuan bagi Pemerintah Pusat dan Pemerintah Daerah untuk melaksanakan Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu agar data penerima program valid, tepat sasaran, dan tepat waktu.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 2,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal3",
+      "parent_id": "permensos-28-2017::pasal3",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "parent",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 3,
+      "ayat": null,
+      "huruf": null,
+      "text": "(1) Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu meliputi: a. struktur organisasi; b. mekanisme pelaksanaan; c. pengolahan dan penyajian data; d. monitoring dan evaluasi; dan e. pendanaan.\n(2) Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu sebagaimana dimaksud pada ayat (1) tercantum dalam Lampiran yang merupakan bagian tidak terpisahkan dari Peraturan Menteri ini.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 3 — (1) Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu meliputi: a. struktur organisasi; b. mekanisme pelaksanaan; c. pengolahan dan penyajian data; d. monitoring dan evaluasi; dan e. pendanaan.\n(2) Pedoman Umum Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu sebagaimana dimaksud pada ayat (1) tercantum dalam Lampiran yang merupakan bagian tidak terpisahkan dari Peraturan Menteri ini.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 3,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal4",
+      "parent_id": "permensos-28-2017::pasal4",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "parent",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 4,
+      "ayat": null,
+      "huruf": null,
+      "text": "(1) Struktur organisasi sebagaimana dimaksud dalam Pasal 3 huruf a merupakan pelaksana Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu di daerah kabupaten/kota.\n(2) Struktur organisasi sebagaimana dimaksud pada ayat (1) terdiri atas: a. bupati/wali kota; b. kepala dinas sosial daerah kabupaten/kota; c. kepala dinas kependudukan dan pencatatan sipil daerah kabupaten/kota; d. kepala badan pusat statistik daerah kabupaten/ kota; e. camat; dan f. kepala desa/lurah/nama lain.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 4 — (1) Struktur organisasi sebagaimana dimaksud dalam Pasal 3 huruf a merupakan pelaksana Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu di daerah kabupaten/kota.\n(2) Struktur organisasi sebagaimana dimaksud pada ayat (1) terdiri atas: a. bupati/wali kota; b. kepala dinas sosial daerah kabupaten/kota; c. kepala dinas kependudukan dan pencatatan sipil daerah kabupaten/kota; d. kepala badan pusat statistik daerah kabupaten/ kota; e. camat; dan f. kepala desa/lurah/nama lain.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 3,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal5",
+      "parent_id": "permensos-28-2017::pasal5",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "parent",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 5,
+      "ayat": null,
+      "huruf": null,
+      "text": "(1) Mekanisme Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu sebagaimana dimaksud dalam",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 5 — (1) Mekanisme Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu sebagaimana dimaksud dalam",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 3,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal6",
+      "parent_id": "permensos-28-2017::pasal6",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "parent",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 6,
+      "ayat": null,
+      "huruf": null,
+      "text": "(1) Pengolahan dan penyajian data sebagaimana dimaksud dalam Pasal 3 huruf c merupakan kegiatan pemeriksaan data dan dokumen, pembersihan data, pemeringkatan data, pembuatan daftar dan tabulasi data, serta penyajian data.\n(2) Pengolahan dan penyajian data sebagaimana dimaksud pada ayat (1) dilaksanakan oleh Pusat Data dan Informasi Kesejahteraan Sosial.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 6 — (1) Pengolahan dan penyajian data sebagaimana dimaksud dalam Pasal 3 huruf c merupakan kegiatan pemeriksaan data dan dokumen, pembersihan data, pemeringkatan data, pembuatan daftar dan tabulasi data, serta penyajian data.\n(2) Pengolahan dan penyajian data sebagaimana dimaksud pada ayat (1) dilaksanakan oleh Pusat Data dan Informasi Kesejahteraan Sosial.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 4,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal7",
+      "parent_id": "permensos-28-2017::pasal7",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "parent",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 7,
+      "ayat": null,
+      "huruf": null,
+      "text": "(1) Monitoring dan evaluasi sebagaimana dimaksud dalam",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 7 — (1) Monitoring dan evaluasi sebagaimana dimaksud dalam",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 4,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal8",
+      "parent_id": "permensos-28-2017::pasal8",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "parent",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 8,
+      "ayat": null,
+      "huruf": null,
+      "text": "Pendanaan sebagaimana dimaksud dalam Pasal 3 huruf e bersumber dari Anggaran Pendapatan dan Belanja Negara, anggaran pendapatan dan belanja daerah, dan sumber pendanaan lain yang tidak mengikat sesuai dengan ketentuan peraturan perundang-undangan.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 8 — Pendanaan sebagaimana dimaksud dalam Pasal 3 huruf e bersumber dari Anggaran Pendapatan dan Belanja Negara, anggaran pendapatan dan belanja daerah, dan sumber pendanaan lain yang tidak mengikat sesuai dengan ketentuan peraturan perundang-undangan.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 4,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal9",
+      "parent_id": "permensos-28-2017::pasal9",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "parent",
+      "bab": "II",
+      "bagian": null,
+      "pasal": 9,
+      "ayat": null,
+      "huruf": null,
+      "text": "Ketentuan lebih lanjut mengenai mekanisme pelaksanaan, pengolahan dan penyajian data, serta monitoring dan evaluasi sebagaimana dimaksud dalam Pasal 5 sampai dengan Pasal 7 diatur dalam Peraturan yang ditetapkan oleh Pejabat Eselon I yang menangani Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu di lingkungan Kementerian Sosial.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB II — Pasal 9 — Ketentuan lebih lanjut mengenai mekanisme pelaksanaan, pengolahan dan penyajian data, serta monitoring dan evaluasi sebagaimana dimaksud dalam Pasal 5 sampai dengan Pasal 7 diatur dalam Peraturan yang ditetapkan oleh Pejabat Eselon I yang menangani Verifikasi dan Validasi Data Terpadu Penanganan Fakir Miskin dan Orang Tidak Mampu di lingkungan Kementerian Sosial.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 4,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    },
+    {
+      "chunk_id": "permensos-28-2017::pasal10",
+      "parent_id": "permensos-28-2017::pasal10",
+      "doc_id": "permensos-28-2017",
+      "chunk_type": "parent",
+      "bab": "III",
+      "bagian": null,
+      "pasal": 10,
+      "ayat": null,
+      "huruf": null,
+      "text": "Peraturan Menteri ini mulai berlaku pada tanggal diundangkan. Agar setiap orang mengetahuinya, memerintahkan pengundangan Peraturan Menteri ini dengan penempatannya dalam Berita Negara Republik Indonesia. Ditetapkan di Jakarta pada tanggal 29 Desember 2017 MENTERI SOSIAL REPUBLIK INDONESIA, ttd. KHOFIFAH INDAR PARAWANSA Diundangkan di Jakarta pada tanggal 29 Januari 2018 DIREKTUR JENDERAL PERATURAN PERUNDANG-UNDANGAN KEMENTERIAN HUKUM DAN HAK ASASI MANUSIA REPUBLIK INDONESIA, ttd. WIDODO EKATJAHJANA BERITA NEGARA REPUBLIK INDONESIA TAHUN 2018 NOMOR 184 LAMPIRAN PERATURAN MENTERI SOSIAL REPUBLIK INDONESIA NOMOR  28 TAHUN 2017 TENTANG PEDOMAN UMUM VERIFIKASI DAN VALIDASI DATA TERPADU PENANGANAN FAKIR MISKIN DAN ORANG TIDAK MAMPU.",
+      "text_for_embed": "passage: [PERMENSOS 28/2017: verval data terpadu] BAB III — Pasal 10 — Peraturan Menteri ini mulai berlaku pada tanggal diundangkan. Agar setiap orang mengetahuinya, memerintahkan pengundangan Peraturan Menteri ini dengan penempatannya dalam Berita Negara Republik Indonesia. Ditetapkan di Jakarta pada tanggal 29 Desember 2017 MENTERI SOSIAL REPUBLIK INDONESIA, ttd. KHOFIFAH INDAR PARAWANSA Diundangkan di Jakarta pada tanggal 29 Januari 2018 DIREKTUR JENDERAL PERATURAN PERUNDANG-UNDANGAN KEMENTERIAN HUKUM DAN HAK ASASI MANUSIA REPUBLIK INDONESIA, ttd. WIDODO EKATJAHJANA BERITA NEGARA REPUBLIK INDONESIA TAHUN 2018 NOMOR 184 LAMPIRAN PERATURAN MENTERI SOSIAL REPUBLIK INDONESIA NOMOR  28 TAHUN 2017 TENTANG PEDOMAN UMUM VERIFIKASI DAN VALIDASI DATA TERPADU PENANGANAN FAKIR MISKIN DAN ORANG TIDAK MAMPU.",
+      "summary_prefix": "PERMENSOS 28/2017: verval data terpadu",
+      "lang": "id",
+      "source_page": 5,
+      "source_pdf_path": "Permensos no 28 th 2017  ttg verval data terpadu.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": []
+    }
+  ]
+}

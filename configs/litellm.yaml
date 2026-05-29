@@ -1,0 +1,43 @@
+# LiteLLM Router config — 4-tier fallback chain
+# See build-spec Section 5.3 for full spec
+# Populate API keys via .env (os.environ/ prefix)
+
+model_list:
+  - model_name: chatbot-primary
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 10
+      max_tokens: 2048
+      temperature: 0.1
+
+  - model_name: chatbot-fallback-1
+    litellm_params:
+      model: groq/llama-3.3-70b-versatile
+      api_key: os.environ/GROQ_API_KEY
+      rpm: 30
+      max_tokens: 2048
+      temperature: 0.1
+
+  - model_name: chatbot-fallback-2
+    litellm_params:
+      model: cerebras/qwen-3-32b
+      api_key: os.environ/CEREBRAS_API_KEY
+      rpm: 30
+      max_tokens: 2048
+      temperature: 0.1
+
+  - model_name: chatbot-fallback-3
+    litellm_params:
+      model: openrouter/deepseek/deepseek-r1:free
+      api_key: os.environ/OPENROUTER_API_KEY
+      rpm: 20
+      max_tokens: 2048
+      temperature: 0.1
+
+router_settings:
+  routing_strategy: simple-shuffle
+  num_retries: 3
+  retry_after: 5
+  fallbacks:
+    - chatbot-primary: ["chatbot-fallback-1", "chatbot-fallback-2", "chatbot-fallback-3"]

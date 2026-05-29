@@ -1,0 +1,109 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment secrets — NEVER commit
+.env
+.env.local
+.env.*.local
+
+# Vector / index stores — large, regenerable
+data/chroma/
+data/bm25/
+
+# Model weights — large binary, download at deploy time
+models/
+
+# Logs
+*.log
+logs/
+
+# Langfuse local cache
+.langfuse/
+
+# Temporary / tool state
+.tmp/
+.claude/
+# Chainlit auto-generated UI translations (regenerated on first run); config.toml is kept
+.chainlit/translations/
+
+# IDE
+.vscode/settings.json
+.vscode/*.code-workspace
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# NOTE: data/parsed/ is intentionally NOT ignored — parsed JSON is version-controlled
+# NOTE: data/registry/ is intentionally NOT ignored — doc registry is version-controlled
+# NOTE: data/test/ is intentionally NOT ignored — eval sets are version-controlled
+# NOTE: tests/golden/ is intentionally NOT ignored — smoke test questions are version-controlled
+
+# Eval artifacts (regenerable, big-ish)
+data/eval_runs/
+data/eval_cache/
+data/chroma_test/
+data/conversations.db
+data/translations.db
+data/hitl_queue.jsonl
+reports/
+
+# Runtime side-effect dirs / accidental files
+.files/
+$null
+
+# Big PDFs at repo root (regulasi source material, kept locally as research, not for runtime)
+/*.pdf
+/*.txt
+!README.md
+
+# Deployment artifacts (built locally, not committed)
+deploy/artifacts/
+
+# Session-specific
+.env.deploy
+
+# =============================================================================
+# Public-repo curation (added when publishing to GitHub)
+# =============================================================================
+
+# Internal working notes — not for the public repo
+HANDOFF_*.md
+PROGRESS.md
+HF_APPEAL_EMAIL.md
+
+# Ingest metadata sidecars (paired with source PDFs; metadata is baked into parsed JSON)
+*.meta.json
+
+# Raw source PDFs — users supply their own; data/parsed/*.json is the source of truth
+data/raw/*.pdf
+data/raw/**/*.pdf
+
+# Misc local binaries
+cloudflared.exe
+*.exe
+
+# LaTeX sources & build artifacts under docs/ — ship only the compiled reference PDF
+docs/*
+!docs/patih_v3.pdf

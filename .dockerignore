@@ -1,0 +1,50 @@
+# Docker build context exclusions for HF Spaces single-image deploy.
+# .chainlit/, data/, configs/, app/ MUST be baked into image (no bind mount on HF).
+
+.venv/
+.git/
+.github/
+.pytest_cache/
+.hypothesis/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+tests/
+docs/
+models/
+reports/
+
+# Eval artifacts (regenerable, not needed at runtime)
+data/eval_runs/
+data/eval_cache/
+data/chroma_test/
+data/conversations.db
+data/translations.db
+data/hitl_queue.jsonl
+
+# Local secrets / dev artifacts
+.env
+.env.deploy
+*.local
+*.log
+.idea/
+.vscode/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Big PDFs at repo root (regulasi originals, NOT data/raw which IS needed)
+/*.pdf
+/*.txt
+!README.md
+
+# Deploy artifacts (Oracle-specific, not for HF)
+deploy/artifacts/
+deploy/cloudflared/
+
+# Mystery files
+.files/
+$null

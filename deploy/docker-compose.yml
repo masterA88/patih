@@ -1,0 +1,54 @@
+# Docker Compose — Oracle Cloud Always Free ARM A1 deploy
+# See build-spec Section 5.7 and Section 7.3
+# Step 8 — finalize before Oracle deploy
+
+version: "3.8"
+
+services:
+  chatbot:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.app
+      platforms: ["linux/arm64"]
+    image: chatbot-permensos:0.1.0
+    platform: linux/arm64
+    ports: ["8000:8000"]
+    env_file: ../.env
+    volumes:
+      - ../data:/app/data
+      - ../models:/app/models
+    restart: unless-stopped
+    depends_on: [langfuse-db, langfuse-server]
+    healthcheck:
+      test: ["CMD", "curl", "-fsSL", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+
+  langfuse-db:
+    image: postgres:16-alpine
+    platform: linux/arm64
+    environment:
+      POSTGRES_USER: langfuse
+      POSTGRES_PASSWORD: ${LANGFUSE_DB_PASSWORD}
+      POSTGRES_DB: langfuse
+    volumes:
+      - langfuse_db_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  langfuse-server:
+    image: langfuse/langfuse:2.51
+    platform: linux/arm64
+    ports: ["3000:3000"]
+    environment:
+      DATABASE_URL: postgresql://langfuse:${LANGFUSE_DB_PASSWORD}@langfuse-db:5432/langfuse
+      NEXTAUTH_SECRET: ${LANGFUSE_SECRET}
+      NEXTAUTH_URL: http://localhost:3000
+      SALT: ${LANGFUSE_SALT}
+      TELEMETRY_ENABLED: "false"
+    depends_on: [langfuse-db]
+    restart: unless-stopped
+
+volumes:
+  langfuse_db_data:

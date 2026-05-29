@@ -1,0 +1,13 @@
+# Cloudflare Tunnel ingress configuration
+# Step 8 — populate tunnel ID and domain before Oracle deploy
+# See build-spec Section 7.1 and 7.3
+
+tunnel: <TUNNEL_ID_PLACEHOLDER>
+credentials-file: /home/ubuntu/.cloudflared/<TUNNEL_ID_PLACEHOLDER>.json
+
+ingress:
+  - hostname: app.permensos-chat.example.com   # replace with your domain
+    service: http://localhost:8000
+  - hostname: langfuse.permensos-chat.example.com  # optional Langfuse UI
+    service: http://localhost:3000
+  - service: http_status:404

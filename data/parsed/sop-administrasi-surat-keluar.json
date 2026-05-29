@@ -1,0 +1,109 @@
+{
+  "ast": {
+    "bab": [
+      {
+        "nomor": "-",
+        "judul": "DOKUMEN REFERENSI",
+        "bagian": [],
+        "pasal": []
+      }
+    ],
+    "doc_type": "reference"
+  },
+  "chunks_child": [
+    {
+      "chunk_id": "sop-administrasi-surat-keluar::sec1::c1",
+      "parent_id": "sop-administrasi-surat-keluar::sec1",
+      "doc_id": "sop-administrasi-surat-keluar",
+      "chunk_type": "child",
+      "bab": null,
+      "bagian": null,
+      "pasal": null,
+      "ayat": null,
+      "huruf": null,
+      "section_title": "BALAI KESEHATAN OLAHRAGA MASYARAKAT",
+      "text": "Tanggal Efektif Disahkan Oleh Gubernur Kalimantan Selatan Nama SOP Administrasi Surat Keluar Dasar Hukum: Kualifikasi Pelaksana: 1. Peraturan Menteri PANRB Nomor 35 Tahun 2012 tentang Pedoman Penyusunan Standar Operasional Prosedur Administrasi Pemerintahan; dan 2. Peraturan Gubernur Kalimantan Selatan Nomor 044 Tahun 2011 tentang Tata Naskah Dinas Dilingkungan Pemerintah Provinsi Kalimantan Selatan (Berita Daerah Provinsi Kalimantan Selatan Tahun 2011 Nomor 44). a. memiliki kewenangan dalam pengurusan administrasi surat menyurat; dan b. memiliki kemampuan untuk menyelenggarakan administrasi perkantoran memahami rencana kerja dan indikator-indikator kinerja. Keterkaitan: Peralatan/Perlengkapan: a. Berkas/surat masuk; b. ATK; c. Perangkat Komputer; dan d. Lemari Arsip. Peringatan: Pencatatan dan Pendataan: SOP ini merupakan prosedur baku yang wajib dilaksanakan dalam memenuhi kebutuhan administrasi Surat Keluar dan apabila tidak dilaksanakan maka Administrasi Surat Keluar tidak akan berjalan dengan baik. a. Buku Agenda Surat Masuk dan Keluar - 2 - NO",
+      "text_for_embed": "passage: [SOP Administrasi Surat Keluar — BALAI KESEHATAN OLAHRAGA MASYARAKAT] Tanggal Efektif Disahkan Oleh Gubernur Kalimantan Selatan Nama SOP Administrasi Surat Keluar Dasar Hukum: Kualifikasi Pelaksana: 1. Peraturan Menteri PANRB Nomor 35 Tahun 2012 tentang Pedoman Penyusunan Standar Operasional Prosedur Administrasi Pemerintahan; dan 2. Peraturan Gubernur Kalimantan Selatan Nomor 044 Tahun 2011 tentang Tata Naskah Dinas Dilingkungan Pemerintah Provinsi Kalimantan Selatan (Berita Daerah Provinsi Kalimantan Selatan Tahun 2011 Nomor 44). a. memiliki kewenangan dalam pengurusan administrasi surat menyurat; dan b. memiliki kemampuan untuk menyelenggarakan administrasi perkantoran memahami rencana kerja dan indikator-indikator kinerja. Keterkaitan: Peralatan/Perlengkapan: a. Berkas/surat masuk; b. ATK; c. Perangkat Komputer; dan d. Lemari Arsip. Peringatan: Pencatatan dan Pendataan: SOP ini merupakan prosedur baku yang wajib dilaksanakan dalam memenuhi kebutuhan administrasi Surat Keluar dan apabila tidak dilaksanakan maka Administrasi Surat Keluar tidak akan berjalan dengan baik. a. Buku Agenda Surat Masuk dan Keluar - 2 - NO",
+      "summary_prefix": "SOP Administrasi Surat Keluar",
+      "lang": "id",
+      "source_page": 1,
+      "source_pdf_path": "2. SOP Administrasi Surat Keluar.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": [
+        "reference"
+      ]
+    },
+    {
+      "chunk_id": "sop-administrasi-surat-keluar::sec2::c1",
+      "parent_id": "sop-administrasi-surat-keluar::sec2",
+      "doc_id": "sop-administrasi-surat-keluar",
+      "chunk_type": "child",
+      "bab": null,
+      "bagian": null,
+      "pasal": null,
+      "ayat": null,
+      "huruf": null,
+      "section_title": "OUTPUT",
+      "text": "1 2 3 4 5 6 7 8 9 10 1 Menerima konsep surat keluar. Konsep surat keluar 10 menit Konsep surat keluar diterima 2 Mengetik konsep surat keluar. Konsep surat keluar, komputer, kertas 15 menit Konsep surat keluar diketik 3 Memeriksa dan memaraf konsep surat keluar. Konsep surat keluar 5 menit Konsep surat keluar diparaf 4 Menandatangani konsep surat keluar Konsep surat keluar 1 menit Surat Keluar 5 Mengagendakan dan memberi nomor surat keluar. Surat keluar dan buku agenda surat keluar 1 menit Surat keluar bernomor dan teragenda 6 Mendistribusikan surat keluar. Surat Keluar 1 menit Tanda terima",
+      "text_for_embed": "passage: [SOP Administrasi Surat Keluar — OUTPUT] 1 2 3 4 5 6 7 8 9 10 1 Menerima konsep surat keluar. Konsep surat keluar 10 menit Konsep surat keluar diterima 2 Mengetik konsep surat keluar. Konsep surat keluar, komputer, kertas 15 menit Konsep surat keluar diketik 3 Memeriksa dan memaraf konsep surat keluar. Konsep surat keluar 5 menit Konsep surat keluar diparaf 4 Menandatangani konsep surat keluar Konsep surat keluar 1 menit Surat Keluar 5 Mengagendakan dan memberi nomor surat keluar. Surat keluar dan buku agenda surat keluar 1 menit Surat keluar bernomor dan teragenda 6 Mendistribusikan surat keluar. Surat Keluar 1 menit Tanda terima",
+      "summary_prefix": "SOP Administrasi Surat Keluar",
+      "lang": "id",
+      "source_page": 2,
+      "source_pdf_path": "2. SOP Administrasi Surat Keluar.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": [
+        "reference"
+      ]
+    }
+  ],
+  "chunks_parent": [
+    {
+      "chunk_id": "sop-administrasi-surat-keluar::sec1",
+      "parent_id": "sop-administrasi-surat-keluar::sec1",
+      "doc_id": "sop-administrasi-surat-keluar",
+      "chunk_type": "parent",
+      "bab": null,
+      "bagian": null,
+      "pasal": null,
+      "ayat": null,
+      "huruf": null,
+      "section_title": "BALAI KESEHATAN OLAHRAGA MASYARAKAT",
+      "text": "Tanggal Efektif Disahkan Oleh Gubernur Kalimantan Selatan Nama SOP Administrasi Surat Keluar Dasar Hukum: Kualifikasi Pelaksana: 1. Peraturan Menteri PANRB Nomor 35 Tahun 2012 tentang Pedoman Penyusunan Standar Operasional Prosedur Administrasi Pemerintahan; dan 2. Peraturan Gubernur Kalimantan Selatan Nomor 044 Tahun 2011 tentang Tata Naskah Dinas Dilingkungan Pemerintah Provinsi Kalimantan Selatan (Berita Daerah Provinsi Kalimantan Selatan Tahun 2011 Nomor 44). a. memiliki kewenangan dalam pengurusan administrasi surat menyurat; dan b. memiliki kemampuan untuk menyelenggarakan administrasi perkantoran memahami rencana kerja dan indikator-indikator kinerja. Keterkaitan: Peralatan/Perlengkapan: a. Berkas/surat masuk; b. ATK; c. Perangkat Komputer; dan d. Lemari Arsip. Peringatan: Pencatatan dan Pendataan: SOP ini merupakan prosedur baku yang wajib dilaksanakan dalam memenuhi kebutuhan administrasi Surat Keluar dan apabila tidak dilaksanakan maka Administrasi Surat Keluar tidak akan berjalan dengan baik. a. Buku Agenda Surat Masuk dan Keluar - 2 - NO",
+      "text_for_embed": "passage: [SOP Administrasi Surat Keluar — BALAI KESEHATAN OLAHRAGA MASYARAKAT] Tanggal Efektif Disahkan Oleh Gubernur Kalimantan Selatan Nama SOP Administrasi Surat Keluar Dasar Hukum: Kualifikasi Pelaksana: 1. Peraturan Menteri PANRB Nomor 35 Tahun 2012 tentang Pedoman Penyusunan Standar Operasional Prosedur Administrasi Pemerintahan; dan 2. Peraturan Gubernur Kalimantan Selatan Nomor 044 Tahun 2011 tentang Tata Naskah Dinas Dilingkungan Pemerintah Provinsi Kalimantan Selatan (Berita Daerah Provinsi Kalimantan Selatan Tahun 2011 Nomor 44). a. memiliki kewenangan dalam pengurusan administrasi surat menyurat; dan b. memiliki kemampuan untuk menyelenggarakan administrasi perkantoran memahami rencana kerja dan indikator-indikator kinerja. Keterkaitan: Peralatan/Perlengkapan: a. Berkas/surat masuk; b. ATK; c. Perangkat Komputer; dan d. Lemari Arsip. Peringatan: Pencatatan dan Pendataan: SOP ini merupakan prosedur baku yang wajib dilaksanakan dalam memenuhi kebutuhan administrasi Surat Keluar dan apabila tidak dilaksanakan maka Administrasi Surat Keluar tidak akan berjalan dengan baik. a. Buku Agenda Surat Masuk dan Keluar - 2 - NO",
+      "summary_prefix": "SOP Administrasi Surat Keluar",
+      "lang": "id",
+      "source_page": 1,
+      "source_pdf_path": "2. SOP Administrasi Surat Keluar.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": [
+        "reference"
+      ]
+    },
+    {
+      "chunk_id": "sop-administrasi-surat-keluar::sec2",
+      "parent_id": "sop-administrasi-surat-keluar::sec2",
+      "doc_id": "sop-administrasi-surat-keluar",
+      "chunk_type": "parent",
+      "bab": null,
+      "bagian": null,
+      "pasal": null,
+      "ayat": null,
+      "huruf": null,
+      "section_title": "OUTPUT",
+      "text": "1 2 3 4 5 6 7 8 9 10 1 Menerima konsep surat keluar. Konsep surat keluar 10 menit Konsep surat keluar diterima 2 Mengetik konsep surat keluar. Konsep surat keluar, komputer, kertas 15 menit Konsep surat keluar diketik 3 Memeriksa dan memaraf konsep surat keluar. Konsep surat keluar 5 menit Konsep surat keluar diparaf 4 Menandatangani konsep surat keluar Konsep surat keluar 1 menit Surat Keluar 5 Mengagendakan dan memberi nomor surat keluar. Surat keluar dan buku agenda surat keluar 1 menit Surat keluar bernomor dan teragenda 6 Mendistribusikan surat keluar. Surat Keluar 1 menit Tanda terima",
+      "text_for_embed": "passage: [SOP Administrasi Surat Keluar — OUTPUT] 1 2 3 4 5 6 7 8 9 10 1 Menerima konsep surat keluar. Konsep surat keluar 10 menit Konsep surat keluar diterima 2 Mengetik konsep surat keluar. Konsep surat keluar, komputer, kertas 15 menit Konsep surat keluar diketik 3 Memeriksa dan memaraf konsep surat keluar. Konsep surat keluar 5 menit Konsep surat keluar diparaf 4 Menandatangani konsep surat keluar Konsep surat keluar 1 menit Surat Keluar 5 Mengagendakan dan memberi nomor surat keluar. Surat keluar dan buku agenda surat keluar 1 menit Surat keluar bernomor dan teragenda 6 Mendistribusikan surat keluar. Surat Keluar 1 menit Tanda terima",
+      "summary_prefix": "SOP Administrasi Surat Keluar",
+      "lang": "id",
+      "source_page": 2,
+      "source_pdf_path": "2. SOP Administrasi Surat Keluar.pdf",
+      "version": "v1-2026-05-28",
+      "cross_refs_outgoing": [],
+      "tags": [
+        "reference"
+      ]
+    }
+  ]
+}

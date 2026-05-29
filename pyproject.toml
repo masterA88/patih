@@ -1,0 +1,85 @@
+[tool.poetry]
+name = "chatbot-permensos"
+version = "0.1.0"
+description = "Phase 1 MVP zero-budget chatbot QA Permensos 8/2023"
+authors = ["Hilmi Nur Ardian <master.ardian3@gmail.com>"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+
+# --- Core RAG / orchestration ---
+llama-index-core = "0.11.20"
+llama-index-embeddings-huggingface = "0.3.1"
+llama-index-vector-stores-chroma = "0.2.1"
+chromadb = "0.5.15"
+rank-bm25 = "0.2.2"
+
+# --- Embedding inference (CPU, ARM-friendly) ---
+sentence-transformers = "3.0.1"
+transformers = "4.44.2"
+torch = { version = "2.2.2", source = "pytorch_cpu" }
+onnxruntime = "1.18.1"           # ARM64 wheels available
+optimum = { version = "^1.22", extras = ["onnxruntime"] }
+huggingface-hub = "0.24.6"
+
+# --- LLM gateway ---
+litellm = "1.45.0"
+google-generativeai = "0.7.2"    # native Gemini SDK (LiteLLM fallback path)
+tenacity = "8.5.0"
+
+# --- PDF / OCR ---
+pymupdf = "1.24.10"
+unstructured = { version = "0.15.13", extras = ["pdf"] }
+pytesseract = "0.3.13"           # bind ke Tesseract binary (apt install tesseract-ocr-ind)
+pdfplumber = "0.11.4"            # backup parser
+
+# --- UI ---
+chainlit = "1.2.0"
+
+# --- Eval ---
+ragas = "0.2.6"
+datasets = "2.21.0"
+
+# --- Observability ---
+langfuse = "2.51.5"
+
+# --- Lang detect ---
+lingua-language-detector = "2.0.2"
+
+# --- Config / serving ---
+pydantic = "2.9.2"
+pydantic-settings = "2.5.2"
+# fastapi + uvicorn: tracked transitively via chainlit (1.2.0 pins fastapi<0.113, uvicorn ^0.25)
+structlog = "24.4.0"
+python-dotenv = "1.0.1"
+
+# --- Utility ---
+tqdm = "4.66.5"
+orjson = "3.10.7"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "8.3.3"
+pytest-asyncio = "0.24.0"
+pytest-cov = "5.0.0"
+ruff = "0.6.8"
+black = "24.8.0"
+mypy = "1.11.2"
+hypothesis = "6.112.1"           # property-based untuk parser
+
+[[tool.poetry.source]]
+name = "pytorch_cpu"
+url = "https://download.pytorch.org/whl/cpu"
+priority = "explicit"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "integration: marks tests as integration tests (require PDF + full pipeline)",
+    "e2e: marks tests as end-to-end (require real API keys + full index)",
+    "slow: marks tests as slow (> 5s, typically live API calls)",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

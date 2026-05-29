@@ -1,0 +1,19 @@
+# systemd unit for chatbot service (alternative to docker-compose if preferred)
+# Step 8 — configure before Oracle deploy
+# See build-spec Section 7.3
+
+[Unit]
+Description=Chatbot Permensos Chainlit Service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/chatbot-permensos
+EnvironmentFile=/opt/chatbot-permensos/.env
+ExecStart=/opt/chatbot-permensos/.venv/bin/chainlit run app/ui/chainlit_app.py --host 0.0.0.0 --port 8000
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,4 @@
+# No Git LFS in the public repo: it ships only source + small assets.
+# The 2.2 GB embedder and the Chroma/BM25 indexes are built locally — see README.
+*.png binary
+*.pdf binary
